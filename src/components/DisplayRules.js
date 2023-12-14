@@ -1,11 +1,170 @@
 import React from 'react'
+import { useState } from 'react';
+import { FaSearch } from 'react-icons/fa';
+import PdfViewer from './PdfViewer';
+import './styles/DisplayRules.css'
 
 const DisplayRules = () => {
+  const [searchTerm, setSearchTerm] = useState('');
+  const [documentNumber, setDocumentNumber] = useState('');
+  const [issueDate, setIssueDate] = useState('');
+  const [fromDate, setFromDate] = useState('');
+  const [toDate, setToDate] = useState('');
+  const [department, setDepartment] = useState('');
+  const [ministry, setMinistry] = useState('');
+  const [searchResults, setSearchResults] = useState([]);
+  const [selectedDocument, setSelectedDocument] = useState(null);
+
+  const documents = [
+    { documentNumber: '123', issueDate: '2023-01-01', title: 'Tender Rules and Regulations', content: 'Document content about tender rules and regulations', url: '/a.pdf' },
+    { documentNumber: '456', issueDate: '2023-02-15', title: 'Procurement Guidelines', content: 'Document content about procurement guidelines', url: '/b.pdf' },
+    { documentNumber: '789', issueDate: '2023-03-20', title: 'Contract Terms and Conditions', content: 'Document content about contract terms and conditions hkajdhka', url: 'c.pdf' },
+  ];
+
+  const deptList = ['Department of Finance', 'Department of Coal', 'Department of Power'];
+  const ministryList = ['Ministry of Finance', 'Ministry of Coal', 'Ministry of Power'];
+
+  const pdfFile = "http://africau.edu/images/default/sample.pdf"
+  
+
+
+  const handleSearch = () => {
+    const filteredResults = documents.filter(document =>
+      document.content.toLowerCase().includes(searchTerm.toLowerCase()) &&
+      document.documentNumber.includes(documentNumber) && (!issueDate || document.issueDate === issueDate) &&
+      (!fromDate || !toDate || (document.issueDate >= fromDate && document.issueDate <= toDate))
+    );
+
+    setSearchResults(filteredResults);
+    setSelectedDocument(null);
+  };
+
+  const handleReset = () => {
+    setSearchTerm('');
+    setDocumentNumber('');
+    setIssueDate('');
+    setFromDate('');
+    setToDate('');
+    setSearchResults([]);
+  };
+
+  const handleDocumentClick = (documentIndex) => {
+    setSelectedDocument(documentIndex);
+  };
+
+  const handleBackToResults = () => {
+    setSelectedDocument(null);
+  };
+
   return (
     <>
-      <h1>display rules</h1>
+    <div className='search-container'>
+      <div className="searchbar-container">
+        <div className='searchbar-wrapper'>
+          <FaSearch id="search-icon" />
+          <input
+            className='search-input'
+            type="text"
+            placeholder="Search"
+            value={searchTerm}
+            onChange={(e) => setSearchTerm(e.target.value)}
+          />
+        </div>
+        <button className='search-btn' onClick={handleSearch}>Search</button>
+      </div>
+      <div className='search-filter-container'>
+        <div className="docno-container">
+          <label>Document number : </label>
+          <input
+            type="text"
+            placeholder=""
+            value={documentNumber}
+            onChange={(e) => setDocumentNumber(e.target.value)}
+          />
+        </div>
+        <div className="date-container">
+          <label>Issue date : </label>
+          <input
+            type="date"
+            placeholder="Issue Date"
+            value={issueDate}
+            onChange={(e) => setIssueDate(e.target.value)}
+          />
+        </div>
+        <div className='date-range-container'>
+          <label>From:</label>
+          <input
+            type="date"
+            value={fromDate}
+            onChange={(e) => setFromDate(e.target.value)}
+          />
+          <label>To:</label>
+          <input
+            type="date"
+            value={toDate}
+            onChange={(e) => setToDate(e.target.value)}
+          />
+        </div>
+        <label className="department-container">
+          Department : 
+          <select value={department} onChange={(e) => setDepartment(e.target.value)}>
+            <option value="">Select a department</option>
+            {deptList.map((dept) => (
+                <option key={dept} value={dept}>
+                {dept}
+                </option>
+            ))}
+          </select>
+        </label>
+        <label className="ministry-container">
+          Ministry : 
+          <select value={ministry} onChange={(e) => setMinistry(e.target.value)}>
+            <option value="">Select a Ministry</option>
+            {ministryList.map((dept) => (
+                <option key={dept} value={dept}>
+                {dept}
+                </option>
+            ))}
+          </select>
+        </label>
+        <button onClick={handleReset}>Apply Filter</button>
+        <button onClick={handleReset}>Reset</button>
+      </div>
+    </div>
+
+    <div>
+      {selectedDocument === null ? (
+          <div>
+            <ul>
+              {searchResults.map((result, index) => (
+                <li key={index}>
+                  <h3 onClick={() => handleDocumentClick(index)}>
+                    <a href="#!">{result.title}</a>
+                  </h3>
+                  {/* <p>Matched Keywords: {result.matchedKeywords.join(', ')}</p> */}
+                  <p>{result.content.substring(0, 150)}...</p>
+                </li>
+              ))}
+            </ul>
+          </div>
+        ) : (
+          <div>
+            <a href="#!" onClick={handleBackToResults}>Back to Results</a>
+            <h2>{documents[selectedDocument].title}</h2>
+            {/* <a href={URL.createObjectURL(documents[selectedDocument].url)} target="_blank" >
+              View Uploaded PDF
+            </a> */}
+            <div style={{display: "flex", justifyContent: "center"}}>
+              <div style={{width: "700px", border: "3px solid gray"}}>
+                {console.log(documents[selectedDocument].url)}
+                  <PdfViewer pdfFile={documents[selectedDocument].url} />
+              </div>
+            </div>
+          </div>
+        )}
+    </div>
     </>
-  )
+  );
 }
 
 export default DisplayRules
