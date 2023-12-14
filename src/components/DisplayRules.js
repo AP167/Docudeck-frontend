@@ -18,7 +18,7 @@ const DisplayRules = () => {
   const documents = [
     { documentNumber: '123', issueDate: '2023-01-01', title: 'Tender Rules and Regulations', content: 'Document content about tender rules and regulations', url: '/a.pdf' },
     { documentNumber: '456', issueDate: '2023-02-15', title: 'Procurement Guidelines', content: 'Document content about procurement guidelines', url: '/b.pdf' },
-    { documentNumber: '789', issueDate: '2023-03-20', title: 'Contract Terms and Conditions', content: 'Document content about contract terms and conditions hkajdhka', url: 'c.pdf' },
+    { documentNumber: '789', issueDate: '2023-03-20', title: 'Contract Terms and Conditions', content: 'Document content about contract terms and conditions hkajdhka', url: '/c.pdf' },
   ];
 
   const deptList = ['Department of Finance', 'Department of Coal', 'Department of Power'];
