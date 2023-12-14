@@ -3,6 +3,7 @@ import { useState } from 'react';
 import { FaSearch } from 'react-icons/fa';
 import PdfViewer from './PdfViewer';
 import './styles/DisplayRules.css'
+import { FaRegCalendarAlt } from 'react-icons/fa';
 
 const DisplayRules = () => {
   const [searchTerm, setSearchTerm] = useState('');
@@ -46,6 +47,7 @@ const DisplayRules = () => {
     setFromDate('');
     setToDate('');
     setSearchResults([]);
+    setSelectedDocument(null);
   };
 
   const handleDocumentClick = (documentIndex) => {
@@ -73,68 +75,95 @@ const DisplayRules = () => {
         <button className='search-btn' onClick={handleSearch}>Search</button>
       </div>
       <div className='search-filter-container'>
-        <div className="docno-container">
-          <label>Document number : </label>
-          <input
-            type="text"
-            placeholder=""
-            value={documentNumber}
-            onChange={(e) => setDocumentNumber(e.target.value)}
-          />
+        <div className="docno-container filter-container">
+          <label>
+            <span>Circular/Memo/Notice number : </span>
+            <input
+              type="text"
+              placeholder=""
+              value={documentNumber}
+              onChange={(e) => setDocumentNumber(e.target.value)}
+            />
+          </label>
+          
         </div>
-        <div className="date-container">
-          <label>Issue date : </label>
-          <input
-            type="date"
-            placeholder="Issue Date"
-            value={issueDate}
-            onChange={(e) => setIssueDate(e.target.value)}
-          />
+        <div className="date-container filter-container">
+          <label>
+            <span>Issue date : </span>
+            <input
+              type="date"
+              placeholder="Issue Date"
+              value={issueDate}
+              onChange={(e) => setIssueDate(e.target.value)}
+            />
+          </label>
         </div>
-        <div className='date-range-container'>
-          <label>From:</label>
-          <input
-            type="date"
-            value={fromDate}
-            onChange={(e) => setFromDate(e.target.value)}
-          />
-          <label>To:</label>
-          <input
-            type="date"
-            value={toDate}
-            onChange={(e) => setToDate(e.target.value)}
-          />
+        <div className='date-range-container filter-container'>
+          <label>
+            <span>From:</span>
+            <input
+              type="date"
+              value={fromDate}
+              onChange={(e) => setFromDate(e.target.value)}
+            />
+          </label>
+          <label>
+            <span className='to-date'>To:</span>
+            <input
+              type="date"
+              value={toDate}
+              onChange={(e) => setToDate(e.target.value)}
+            />
+          </label>
         </div>
-        <label className="department-container">
-          Department : 
-          <select value={department} onChange={(e) => setDepartment(e.target.value)}>
-            <option value="">Select a department</option>
-            {deptList.map((dept) => (
-                <option key={dept} value={dept}>
-                {dept}
-                </option>
-            ))}
-          </select>
-        </label>
-        <label className="ministry-container">
-          Ministry : 
-          <select value={ministry} onChange={(e) => setMinistry(e.target.value)}>
-            <option value="">Select a Ministry</option>
-            {ministryList.map((dept) => (
-                <option key={dept} value={dept}>
-                {dept}
-                </option>
-            ))}
-          </select>
-        </label>
-        <button onClick={handleReset}>Apply Filter</button>
-        <button onClick={handleReset}>Reset</button>
+        {/* <div className="date-picker-container filter-container">
+              <label htmlFor="datepicker" className="datepicker-label">
+                <FaRegCalendarAlt className="calendar-icon" />
+                <input
+                  type="date"
+                  id="datepicker"
+                  className="date-input"
+                  placeholder="DD/MM/YYYY"
+                />
+              </label>
+            </div> */}
+        <div className="department-container filter-container">
+          <label>
+            Department : 
+            <select value={department} onChange={(e) => setDepartment(e.target.value)}>
+              <option value="">Select a department</option>
+              {deptList.map((dept) => (
+                  <option key={dept} value={dept}>
+                  {dept}
+                  </option>
+              ))}
+            </select>
+          </label>
+        </div>
+        <div className="ministry-container filter-container">
+          <label>
+            Ministry : 
+            <select value={ministry} onChange={(e) => setMinistry(e.target.value)}>
+              <option value="">Select a Ministry</option>
+              {ministryList.map((dept) => (
+                  <option key={dept} value={dept}>
+                  {dept}
+                  </option>
+              ))}
+            </select>
+          </label>
+        </div>
+        <button className='filter-btn' onClick={handleReset}>Apply Filter</button>
+        <button className='reset-btn' onClick={handleReset}>Reset</button>
       </div>
     </div>
 
-    <div>
+    <div className='results-container'>
       {selectedDocument === null ? (
           <div>
+            <div className='search-res-msg'>
+              {searchResults.length === 0 ? "No Search Results" : "Search Results"}
+            </div>
             <ul>
               {searchResults.map((result, index) => (
                 <li key={index}>
@@ -142,7 +171,7 @@ const DisplayRules = () => {
                     <a href="#!">{result.title}</a>
                   </h3>
                   {/* <p>Matched Keywords: {result.matchedKeywords.join(', ')}</p> */}
-                  <p>{result.content.substring(0, 150)}...</p>
+                  <p>{result.content.substring(0, 150)}{result.content.length > 150 ? "..." : ""}</p>
                 </li>
               ))}
             </ul>

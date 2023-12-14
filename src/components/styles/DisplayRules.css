@@ -1,3 +1,45 @@
+*{
+    font-family: Graphik,Arial,sans-serif;
+}
+
+
+.date-picker-container {
+display: inline-block;
+position: relative;
+}
+
+.datepicker-label {
+display: flex;
+align-items: center;
+}
+
+.calendar-icon {
+margin-right: 5px;
+color: gray; /* Change the color as needed */
+}
+  
+.date-input {
+padding: 5px;
+font-size: 14px;
+/* Additional styling as needed */
+}
+
+.search-container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+
+.search-filter-container{
+    margin-top: 20px;
+    width: 90vw;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+
+
 .searchbar-container{
     width: 90vw;
     display: flex;
@@ -40,4 +82,57 @@
     color: royalblue;
     padding-left: 5px;
     padding-right: 10px;
+}
+
+
+.filter-container{
+    height: 2rem;
+    margin: 20px;
+}
+
+.filter-container label{
+    height: 100%;
+}
+
+.filter-container label input, select{
+    height: 100%;
+    padding: 0;
+    padding-left: 10px;
+    padding-right: 10px;
+    margin-left: 10px;
+}
+
+.reset-btn, .filter-btn{
+    height: 2rem;
+    width: 100px;
+    padding: 0;
+    margin: 20px;
+}
+
+.to-date{
+    margin-left: 20px;
+}
+
+.results-container{
+    width: 100%;
+}
+
+.search-res-msg{
+    height: 20px;
+    width: 100%;
+    background-color: #ddd;
+    padding: 40px;
+    margin: 40px 0 40px -20px;
+}
+
+
+.results-container ul a{
+    text-decoration: none;
+    font-size: 1.4rem;
+}
+
+.results-container ul li{
+    list-style: none;
+    margin-top: 40px;
+    margin-bottom: 40px;
 }
