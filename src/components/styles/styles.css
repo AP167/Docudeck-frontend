@@ -1,0 +1,75 @@
+  *{
+    font-family: Graphik,Arial,sans-serif;
+    text-align: center;
+  }
+
+  .heading{
+   margin-top: -30px;
+   font-weight: 600;
+   font-size: 42px;
+   line-height: 52px;
+   color: #33333b;   
+  }
+  .subheading{
+    max-width: 800px;
+    margin: 8px auto 0;
+    line-height: 32px;
+    font-size: 22px;
+    font-weight: 400;
+    color: #47474f;
+  }
+
+  .mainBtn{
+    background-color: #e5322d;
+    cursor: pointer;
+    box-sizing: border-box;
+    padding: 24px 32px;
+    color: white;
+    font-size: 22px;
+    line-height: 26px;
+    border-radius: 12px;
+    font-weight: bold;
+    box-shadow: 0 3px 6px 0 rgba(0,0,0,.14);
+    transition: background-color 1s ease-in-out;
+  } 
+  .mainBtn:hover{
+    background-color: rgb(159, 2, 2);  
+  }
+
+  .dropMsg{
+    margin-top: 40px;
+    font-size: 14px;
+  }
+ 
+ .dropzone {
+    justify-content: center;
+    background-color: #f5f5fa;
+    padding: 70px;
+    margin: 40px -7px 0px;
+    height: 70vh;  
+    box-shadow: inset 0px 10px 10px -10px #888888;
+  }
+   
+  .uploaded-pdf {
+    margin-top: 50px;
+    padding: 10px;
+    background-color: #f0f0f0;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    text-align: center;
+  }
+  .uploaded-pdf p {
+    margin: 5px 0;
+  }
+  .uploaded-pdf a {
+   text-decoration: none;
+   margin-top: 15px;
+   color: red;
+  }
+
+  .error-message{
+    color: red;
+    font-weight: 500;
+  }
+
+  
