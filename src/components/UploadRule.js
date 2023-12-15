@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useDropzone } from 'react-dropzone';
 import './styles/UploadRule.css';
 
-const UploadRule = ({ onUpload }) => {
+const UploadRule = () => {
 const [uploadedPDF, setUploadedPDF] = useState(null);
 const [errorMessage, setErrorMessage] = useState('');
 
@@ -17,7 +17,7 @@ const [errorMessage, setErrorMessage] = useState('');
 
     setUploadedPDF(uploadedFile);
     setErrorMessage('');
-    onUpload(acceptedFiles);
+    // onUpload(acceptedFiles);
 
   };
 
