@@ -1,9 +1,10 @@
 import React from 'react'
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { FaSearch } from 'react-icons/fa';
 import PdfViewer from './PdfViewer';
 import './styles/DisplayRules.css'
 import { FaRegCalendarAlt } from 'react-icons/fa';
+import axios from 'axios';
 
 const DisplayRules = () => {
   const [searchTerm, setSearchTerm] = useState('');
@@ -29,15 +30,34 @@ const DisplayRules = () => {
   
 
 
-  const handleSearch = () => {
-    const filteredResults = documents.filter(document =>
-      document.content.toLowerCase().includes(searchTerm.toLowerCase()) &&
-      document.documentNumber.includes(documentNumber) && (!issueDate || document.issueDate === issueDate) &&
-      (!fromDate || !toDate || (document.issueDate >= fromDate && document.issueDate <= toDate))
-    );
+  const handleSearch = async () => {
+    const searchParams = {
+      policy_id: "2",
+      issue_date: "2023-10-10",
+      date_from: "2001-10-10",
+      date_to: "2002-10-10",
+      department: "1",
+      ministry: "1"
+    };
 
-    setSearchResults(filteredResults);
-    setSelectedDocument(null);
+    try {
+      const response = await fetch('http://localhost:5000/search-policies', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(searchParams),
+      });
+
+      if (response.ok) {
+        const policies = await response.json();
+        console.log('Policies fetched:', policies);
+      } else {
+        console.error('Failed to fetch policies');
+      }
+    } catch (error) {
+      console.error('Error searching for policies:', error);
+    }
   };
 
   const handleReset = () => {
