@@ -6,7 +6,7 @@ pdfjs.GlobalWorkerOptions.workerSrc = new URL(
     import.meta.url,
   ).toString();
 
-const PdfViewer = (props) => {
+const PdfViewer = ({ pdfFile }) => {
     const [numPages, setNumPages] = useState();
 
     function onDocumentLoadSuccess({ numPages }){
@@ -15,8 +15,8 @@ const PdfViewer = (props) => {
 
     return (
         <div>
-            {console.log(props.pdfFile)}
-        <Document file={props.pdfFile} onLoadSuccess={onDocumentLoadSuccess} onLoadError={console.error}>
+            {console.log(pdfFile)}
+        <Document file={pdfFile} onLoadSuccess={onDocumentLoadSuccess} onLoadError={console.error}>
         {
             Array.from({ length: numPages }, (_, index) => (
                 <div key={index}>
