@@ -4,7 +4,6 @@ import { FaSearch } from 'react-icons/fa';
 import PdfViewer from './PdfViewer';
 import './styles/DisplayRules.css'
 import { FaRegCalendarAlt } from 'react-icons/fa';
-import axios from 'axios';
 
 const DisplayRules = () => {
   const [searchTerm, setSearchTerm] = useState('');
