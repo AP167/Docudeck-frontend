@@ -15,6 +15,7 @@ const DisplayRules = () => {
   const [ministry, setMinistry] = useState('');
   const [searchResults, setSearchResults] = useState([]);
   const [selectedDocument, setSelectedDocument] = useState(null);
+  const [downloadUrl, setDownloadUrl] = useState('');
 
   const documents = [
     { documentNumber: '123', issueDate: '2023-01-01', title: 'Tender Rules and Regulations', content: 'Document content about tender rules and regulations', url: '/a.pdf' },
@@ -80,6 +81,7 @@ const DisplayRules = () => {
 
   const handleDocumentClick = (documentIndex) => {
     setSelectedDocument(documentIndex);
+    setDownloadUrl(documents[documentIndex].url);
   };
 
   const handleBackToResults = () => {
@@ -207,7 +209,7 @@ const DisplayRules = () => {
         ) : (
           <div>
             <a href="#!" onClick={handleBackToResults}>Back to Results</a>
-            <button >download</button>
+            <a className='download' href={downloadUrl} download={`document_${selectedDocument + 1}.pdf`}> Download </a>
             <h2>{documents[selectedDocument].title}</h2>
             {/* <a href={URL.createObjectURL(documents[selectedDocument].url)} target="_blank" >
               View Uploaded PDF
