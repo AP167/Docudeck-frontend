@@ -58,6 +58,15 @@ const DisplayRules = () => {
     } catch (error) {
       console.error('Error searching for policies:', error);
     }
+
+    const filteredResults = documents.filter(document =>
+      document.content.toLowerCase().includes(searchTerm.toLowerCase()) &&
+      document.documentNumber.includes(documentNumber) && (!issueDate || document.issueDate === issueDate) &&
+      (!fromDate || !toDate || (document.issueDate >= fromDate && document.issueDate <= toDate))
+    );
+
+    setSearchResults(filteredResults);
+    setSelectedDocument(null);
   };
 
   const handleReset = () => {
@@ -199,6 +208,7 @@ const DisplayRules = () => {
         ) : (
           <div>
             <a href="#!" onClick={handleBackToResults}>Back to Results</a>
+            <button >download</button>
             <h2>{documents[selectedDocument].title}</h2>
             {/* <a href={URL.createObjectURL(documents[selectedDocument].url)} target="_blank" >
               View Uploaded PDF
