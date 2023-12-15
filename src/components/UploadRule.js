@@ -1,59 +1,18 @@
-import React, { useState } from 'react';
-import { useDropzone } from 'react-dropzone';
-import './styles/UploadRule.css';
+import React from 'react'
+import UploadPdf from './UploadPdf'
 
 const UploadRule = () => {
-const [uploadedPDF, setUploadedPDF] = useState(null);
-const [errorMessage, setErrorMessage] = useState('');
+  const onUpload = () => {
+    console.log("File uploaded");
+    // Send it to database
+  }
 
-  const onDrop = (acceptedFiles) => {
-    const uploadedFile = acceptedFiles[0];
-
-    if (!uploadedFile || uploadedFile.type !== 'application/pdf') {
-      setErrorMessage('*Only PDF files are allowed');
-      setUploadedPDF(null);
-      return;
-    }
-
-    setUploadedPDF(uploadedFile);
-    setErrorMessage('');
-    // onUpload(acceptedFiles);
-
-  };
-
-  const { getRootProps, getInputProps } = useDropzone({
-    onDrop,
-    accept: '.pdf',
-  });
+  const uploadHeader = "Upload new Rules & Regulations";
+  const uploadDescription = "(can be memo, circular, notice, etc...)";
 
   return (
-    <div className='upload'>
-      <div {...getRootProps()} className="dropzone">
-        <div>
-        <h1 className="heading">Upload new Rules & Regulations</h1>
-        <p className='subheading'>(can be memo, circular, notice, etc...)</p>
-        </div>
+    <UploadPdf onUpload={onUpload} uploadHeader={uploadHeader} uploadDescription={uploadDescription} />
+  )
+}
 
-        <br /> <br /> <br />
-
-        <btn className="mainBtn">Click to select a PDF file</btn>
-        <p className='dropMsg'>or drop PDF here</p>
-  
-        <input {...getInputProps()} />
-        {errorMessage && <p className="error-message"> {errorMessage} </p>}
-        {uploadedPDF && (
-          <div className="uploaded-pdf">
-            <h2>PDF Uploaded.</h2>
-            <p>{uploadedPDF.name}</p>
-            <a href={URL.createObjectURL(uploadedPDF)} target="_blank" rel="noopener noreferrer">
-                View Uploaded PDF
-              </a>
-          </div>
-        )}
-      </div>
-    </div>
-  );
-};
-
-export default UploadRule;
-
+export default UploadRule
