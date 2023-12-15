@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useDropzone } from 'react-dropzone';
-import './styles/styles.css';
+import './styles/UploadRule.css';
 
 const UploadRule = ({ onUpload }) => {
 const [uploadedPDF, setUploadedPDF] = useState(null);
@@ -27,7 +27,7 @@ const [errorMessage, setErrorMessage] = useState('');
   });
 
   return (
-    <div>
+    <div className='upload'>
       <div {...getRootProps()} className="dropzone">
         <div>
         <h1 className="heading">Upload new Rules & Regulations</h1>
@@ -45,7 +45,7 @@ const [errorMessage, setErrorMessage] = useState('');
           <div className="uploaded-pdf">
             <h2>PDF Uploaded.</h2>
             <p>{uploadedPDF.name}</p>
-            <a href={URL.createObjectURL(uploadedPDF)} target="_blank" >
+            <a href={URL.createObjectURL(uploadedPDF)} target="_blank" rel="noopener noreferrer">
                 View Uploaded PDF
               </a>
           </div>
