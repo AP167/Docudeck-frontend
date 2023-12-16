@@ -18,3 +18,20 @@
 .dashboard-body h2 {
     color: #19324f;
 }
+
+.create-tender-button{
+    background-color: #0062f2;
+    cursor: pointer;
+    box-sizing: border-box;
+    padding: 12px 12px;
+    color: white;
+    font-size: 18px;
+    line-height: 26px;
+    border-radius: 12px;
+    font-weight: bold;
+    transition: background-color 0.3s ease-in-out;
+    border: 1px solid white;
+}
+.create-tender-button:hover{
+    background-color: #023e99;  
+  }

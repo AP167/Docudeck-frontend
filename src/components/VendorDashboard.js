@@ -38,7 +38,13 @@ const VendorDashboard = () => {
 
   return (
     <>
-      <TenderList tenders={tenders} type={"vendor"} />
+      <div className="dashboard-body ">
+        <div className="card">
+          <div className="tdb-card">
+              <TenderList tenders={tenders} type={"vendor"} />
+          </div>
+        </div>
+      </div>
     </>
   )
 }

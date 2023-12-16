@@ -63,21 +63,25 @@ function UploadDocument() {
   }
 
   return (
-    <form onSubmit={handleSubmit}>
-      {requiredDocs.map((docName) => (
-        <div key={docName}>
-          <label>{docName}</label>
-          <input
-            type="file"
-            accept="application/pdf"
-            onChange={(e) => handleFileChange(docName, e.target.files[0])}
-          />
+      <form onSubmit={handleSubmit}>
+        <div className="dashboard-body">
+          <div className="card tdb-card">
+              {requiredDocs.map((docName) => (
+                <div className='tender-card' key={docName}>
+                  <label>{docName}</label>
+                  <input
+                    type="file"
+                    accept="application/pdf"
+                    onChange={(e) => handleFileChange(docName, e.target.files[0])}
+                  />
+                </div>
+              ))}
+            <button type="submit" disabled={requiredDocs.length !== Object.keys(uploadedFiles).length}>
+              Submit
+            </button>
+          </div>
         </div>
-      ))}
-      <button type="submit" disabled={requiredDocs.length !== Object.keys(uploadedFiles).length}>
-        Submit
-      </button>
-    </form>
+      </form>
   );
 }
 

@@ -14,15 +14,6 @@ const VendorParticipation = () => {
       comment: 'A'
     },
     { 
-      tender_no: '3',
-      name: 'Vendor D', 
-      docs: [
-        { name: 'Doc C1', link: '/a.pdf' },
-        { name: 'Doc C2', link: '/b.pdf' },
-      ],
-      comment: 'D'
-    },
-    { 
       tender_no: '1',
       name: 'Vendor B', 
       docs: [
@@ -30,15 +21,6 @@ const VendorParticipation = () => {
         { name: 'Doc B2', link: '/b.pdf' },
       ],
       comment: 'B'
-    },
-    { 
-      tender_no: '2',
-      name: 'Vendor D', 
-      docs: [
-        { name: 'Doc C1', link: '/a.pdf' },
-        { name: 'Doc C2', link: '/b.pdf' },
-      ],
-      comment: 'D'
     },
     { 
       tender_no: '1',
@@ -78,35 +60,35 @@ const VendorParticipation = () => {
   }, {});
 
   return (
-    <div className="outer">
-      <div className='container'>
-        {Object.entries(groupedVendors).map(([tender_no, vendorsForTender]) => (
-          <div key={tender_no}>
-            <h2>Tender No: {tender_no}</h2>
-            {vendorsForTender.map((vendor, index) => (
-              <div className='vendor' key={index}>
-                <span className='details'>
-                  Name: {vendor.name}
-                </span>
-                <span className='details'>
-                  Docs: 
-                  {vendor.docs.map((doc, docIndex) => (
-                    <span key={docIndex}>
-                      <a href={doc.link} target="_blank" rel="noopener noreferrer">
-                        {doc.name}
-                      </a>
-                      <FaDownload onClick={() => handleDownload(doc.link, doc.name)} className="download-icon" />
-                      {docIndex < vendor.docs.length - 1 && ', '}
-                    </span>
-                  ))}
-                </span>
-                <span className='details'>
-                  Comment: {vendor.comment}
-                </span>
-              </div>
-            ))}
-          </div>
-        ))}
+    <div className="dashboard-body">
+      <div className='card tdb-card'>
+          {Object.entries(groupedVendors).map(([tender_no, vendorsForTender]) => (
+            <div className='tender-list vendorContainer' key={tender_no}>
+              <h2>Tender No: {tender_no}</h2>
+              {vendorsForTender.map((vendor, index) => (
+                <div className='tender-card' key={index}>
+                  <span className='details comments names'>
+                    {vendor.name}
+                  </span>
+                  <span className='details comments docs'>
+                      <span className="headingDocs">Docs: </span>    
+                    {vendor.docs.map((doc, docIndex) => (
+                      <span key={docIndex}>
+                        <a href={doc.link} target="_blank" rel="noopener noreferrer">
+                          {doc.name}
+                        </a>
+                        <FaDownload onClick={() => handleDownload(doc.link, doc.name)} className="download-icon" />
+                        {docIndex < vendor.docs.length - 1 && ', '}
+                      </span>
+                    ))}
+                  </span>
+                  <span className='details comments'>
+                    Comments: {vendor.comment}
+                  </span>
+                </div>
+              ))}
+            </div>
+          ))}
       </div>
     </div>
   );

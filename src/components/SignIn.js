@@ -12,10 +12,64 @@ const SignIn = (props) => {
 
     let navigate = useNavigate();
 
-    const handleSubmit = (event) => {
+    const handleSubmit = async (event) => {
         event.preventDefault();
         // Handle the form submission logic here
         console.log(email, password, confirmPassword, role);
+
+        if(props.sign === "In"){
+            const data = {
+              email: email,
+              password: password,
+              userType: "role", 
+            };
+            console.log(JSON.stringify(data))
+            try {
+              const response = await fetch('http://localhost:5000/login', {
+                  method: 'POST',
+                  headers: {
+                      'Content-Type': 'application/json',
+                  },
+                  body: JSON.stringify(data),
+              });
+    
+              if (response.ok) {
+                  console.log('Login Successful');
+              } else {
+                  console.log('Invalid Credentials');
+              }
+          } catch (error) {
+              console.error('Error during login:', error);
+          }
+  
+          }
+          else{
+            const data = {
+              email: email,
+              password: password,
+              userType: role, 
+            };
+            console.log(JSON.stringify(data))
+            try {
+              const response = await fetch('http://localhost:5000/sign-up', {
+                  method: 'PUT',
+                  headers: {
+                      'Content-Type': 'application/json',
+                  },
+                  body: JSON.stringify(data),
+              });
+    
+              if (response.ok) {
+                  console.log('Sign up Successful');
+              } else {
+                  console.log('Invalid Credentials');
+              }
+          } catch (error) {
+              console.error('Error during Sign up:', error);
+          }
+  
+        }
+
     };
 
     
