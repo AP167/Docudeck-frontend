@@ -34,7 +34,7 @@ const TenderCard = ({ tender, type }) => {
           <FaDownload /> Download
         </button>
         <button onClick={handleView}>
-          { type === "vendor" ? "Participate" : <><FaEye /> View Vendor Participation</>}
+          { type === "vendor" ? "Participate" : <> Proceed to Technical Evaluation</>}
         </button>
       </div>
     </div>

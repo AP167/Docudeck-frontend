@@ -1,6 +1,9 @@
-.upload  *{
+ .upload  *{
     font-family: Graphik,Arial,sans-serif;
-    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
   }
 
   .heading{
@@ -46,7 +49,8 @@
     background-color: #f5f5fa;
     padding: 70px;
     /* margin: 40px -7px 0px; */
-    height: 80vh;  
+    height: 77.5vh;  
+    overflow: hidden;
     /* box-shadow: inset 0px 10px 10px -10px #888888; */
   }
    
