@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import TenderList from './TenderList';
+import './styles/TenderDashboard.css'
 
 
 const TenderDashboard = () => {
@@ -42,13 +43,17 @@ const TenderDashboard = () => {
     };
 
     return (
-        <>
-            <button onClick={handleCreateTender} className="create-tender-button">
-                Create Tender
-            </button>
-            <TenderList tenders={tenders} />
-        
-        </>
+        <div className='dashboard-body'>
+            <div className="card tdb-card">
+                <button onClick={handleCreateTender} className="create-tender-button">
+                    Create Tender
+                </button>
+            </div>
+            <div className="card tdb-card">
+                <h2>Tenders published</h2>
+                <TenderList className='t-card' tenders={tenders} type={"tender"} />
+            </div>
+        </div>
     );
 }
 

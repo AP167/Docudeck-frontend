@@ -1,6 +1,7 @@
 import React from 'react'
 
 import { FaDownload, FaEye } from 'react-icons/fa';
+import './styles/TenderList.css'
 
 const TenderCard = ({ tender, type }) => {
   const handleDownload = () => {
@@ -21,7 +22,8 @@ const TenderCard = ({ tender, type }) => {
   };
 
   return (
-    <div className="tender-card">
+    <div className="tender-card card">
+      {console.log(tender.name)}
       <h3>{tender.name}</h3>
       <p>{tender.description}</p>
       <div className="button-container">
@@ -29,7 +31,7 @@ const TenderCard = ({ tender, type }) => {
           <FaDownload /> Download
         </button>
         <button onClick={handleView}>
-          <FaEye /> { type === "vendor" ? "Participate" : "View Vendor Participation"}
+          { type === "vendor" ? "Participate" : <><FaEye /> View Vendor Participation</>}
         </button>
       </div>
     </div>
@@ -37,11 +39,11 @@ const TenderCard = ({ tender, type }) => {
 };
 
 
-const TenderList = ({ tenders }) => {
+const TenderList = ({ tenders, type }) => {
   return (
     <div className="tender-list">
       {tenders.map((tender) => (
-        <TenderCard key={tender.id} tender={"tender"} />
+        <TenderCard key={tender.id} tender={tender} type={type} />
       ))}
     </div>
   );
