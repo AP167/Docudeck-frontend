@@ -29,26 +29,24 @@ body{
     margin-bottom: 40px;
 }
 
+.primary-btn, .secondary-btn, .tertiary-btn{
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
 
 .primary-btn{
     background-color: #0062f2; 
     color: white;
-    border: none;
-    border-radius: 5px;
 }
 
 .secondary-btn{
     background-color: #04bd90; 
     color: white;
-    border: none;
-    border-radius: 5px;
 }
 
 
 .tertiary-btn{
     background-color: #d2e3f9; 
     color: #004085;
-    border: none;
-    border-radius: 5px;
 }
-
