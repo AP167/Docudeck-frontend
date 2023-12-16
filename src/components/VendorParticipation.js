@@ -1,8 +1,12 @@
 import React from 'react';
 import { FaDownload } from 'react-icons/fa'; 
 import './styles/VendorParticipation.css';
+import { useLocation } from 'react-router-dom';
 
 const VendorParticipation = () => {
+    const location = useLocation();
+    const { tender } = location.state || {};
+    console.log(tender.name)
     const vendors = [
     { 
       tender_no: '1',

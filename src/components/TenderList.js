@@ -1,9 +1,11 @@
 import React from 'react'
-
+import { useNavigate } from 'react-router-dom';
 import { FaDownload, FaEye } from 'react-icons/fa';
 import './styles/TenderList.css'
 
 const TenderCard = ({ tender, type }) => {
+
+  let navigate = useNavigate();
   const handleDownload = () => {
     // Handle download logic here
     console.log(`Downloading document for tender: ${tender.name}`);
@@ -15,9 +17,10 @@ const TenderCard = ({ tender, type }) => {
 
     if (type === "vendor"){
         // Participate
-
+        navigate('/upload-documents', {state: {tender}});
     } else {
         // View vendor participation
+        navigate('/vendor-participation', {state: {tender}});
     }
   };
 

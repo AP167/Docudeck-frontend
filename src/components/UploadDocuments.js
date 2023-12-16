@@ -1,13 +1,18 @@
 import React, { useState, useEffect } from 'react';
 import { FaCheckCircle } from 'react-icons/fa'; // Importing the checkmark icon from react-icons
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 import './styles/UploadDocuments.css'
 
-function UploadDocument() {
+const UploadDocument =() => {
+  const location = useLocation();
+  const { tender } = location.state || {};
+
   const [requiredDocs, setRequiredDocs] = useState([]);
   const [uploadedFiles, setUploadedFiles] = useState({});
   const [submissionSuccess, setSubmissionSuccess] = useState(false);
   const [comments, setComments] = useState('sample comments');
+
+  console.log(tender.name);
 
   // Fetch the list of required documents from the database
   useEffect(() => {
