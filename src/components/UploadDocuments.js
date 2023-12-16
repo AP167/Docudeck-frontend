@@ -65,7 +65,12 @@ function UploadDocument() {
 
   return (
       <form onSubmit={handleSubmit}>
-        <div className="dashboard-body body-container">
+        <div className="dashboard-body tender-show ">
+          <span className="tname">
+             <h1>Tender Name</h1>
+          </span>
+        </div>
+        <div className="dashboard-body tender-show">
           <div className="card tdb-card">
               {requiredDocs.map((docName) => (
                 <div className='tender-card ' key={docName}>

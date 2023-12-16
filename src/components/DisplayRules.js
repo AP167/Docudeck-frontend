@@ -28,8 +28,6 @@ const DisplayRules = () => {
   const ministryList = ['Ministry of Finance', 'Ministry of Coal', 'Ministry of Power'];
 
   const pdfFile = "http://africau.edu/images/default/sample.pdf"
-  
-
 
   const handleSearch = async () => {
     const searchParams = {
@@ -109,7 +107,7 @@ const DisplayRules = () => {
       <div className='search-filter-container'>
         <div className="docno-container filter-container">
           <label>
-            <span>Circular/Memo/Notice number : </span>
+            <span className='a'>Circular/Memo/Notice number : </span>
             <input
               type="text"
               placeholder=""
@@ -162,7 +160,7 @@ const DisplayRules = () => {
         <div className="department-container filter-container">
           <label>
             Department : 
-            <select value={department} onChange={(e) => setDepartment(e.target.value)}>
+            <select value={department} onChange={(e) => setDepartment(e.target.value)}className='inp'>
               <option value="">Select a department</option>
               {deptList.map((dept) => (
                   <option key={dept} value={dept}>
@@ -175,7 +173,7 @@ const DisplayRules = () => {
         <div className="ministry-container filter-container">
           <label>
             Ministry : 
-            <select value={ministry} onChange={(e) => setMinistry(e.target.value)}>
+            <select value={ministry} onChange={(e) => setMinistry(e.target.value)} className='inp'>
               <option value="">Select a Ministry</option>
               {ministryList.map((dept) => (
                   <option key={dept} value={dept}>
@@ -193,7 +191,7 @@ const DisplayRules = () => {
     <div className='results-container card'>
       {selectedDocument === null ? (
           <div>
-            <div className='search-res-msg'>
+            <div className='search-res-msg' style={{ display: searchResults.length === 0 ? 'block' : 'none' }}>
               {searchResults.length === 0 ? "No Search Results" : "Search Results"}
             </div>
             <ul>
@@ -210,9 +208,11 @@ const DisplayRules = () => {
           </div>
         ) : (
           <div>
-            <a href="#!" onClick={handleBackToResults}>Back to Results</a>
-            <a className='download' href={downloadUrl} download={`document_${selectedDocument + 1}.pdf`}> Download </a>
+            <a href="#!" onClick={handleBackToResults} className='tertiary-btn back-to-reults'>Back to Results</a>
+            <br /> <br />
             <h2>{documents[selectedDocument].title}</h2>
+            <br /> <br />
+            <a className='secondary-btn download' href={downloadUrl} download={`document_${selectedDocument + 1}.pdf`}> Download </a>
             {/* <a href={URL.createObjectURL(documents[selectedDocument].url)} target="_blank" >
               View Uploaded PDF
             </a> */}

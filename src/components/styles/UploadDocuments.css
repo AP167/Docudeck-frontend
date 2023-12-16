@@ -7,13 +7,12 @@
     background-color: #023e99;  
 }
 .names{
-    /* float: left; */
+    float: left;
     display: inline;
     justify-content: center;
     text-align: center;
     padding: 7px;
     margin: 3px;
-    margin-left: 102px;
     background-color: #e7eefe;
     color: black;
     margin-top: -6px;
@@ -27,10 +26,10 @@
     text-align: center;
     padding: 7px;
     margin-top: -7px;
-    margin-left: 250px;
+    margin-left: 40px;
     background-color: #e7eefe;
     width: auto;
-    min-width: 200px;
+    min-width: 400px;
     border-radius: 7px;
 }
 
@@ -40,4 +39,26 @@
     display: flex;
     justify-content: center;
     margin: 1rem auto; 
+}
+.tender-show{
+    min-height: 5vh;
+    margin-bottom: -40px;
+    padding: 0px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: linear-gradient(90deg, rgba(210,227,249,1) 0%, rgba(216,244,239,1) 100%)
+}
+.tname{
+    background-color: #f9fbfd;
+    padding: 0.2rem;
+    margin-top: 30px;
+    margin-bottom: 40px;
+    border-radius: 10px;
+    width: 94vw;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+   
+}
+.tname h1{
+    margin-left: 25px;
 }
