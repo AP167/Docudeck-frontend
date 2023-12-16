@@ -5,7 +5,7 @@ body{
   background: linear-gradient(90deg, rgba(210,227,249,1) 0%, rgba(0,212,255,1) 100%);  */
 }
 
-/* Main container styles */
+
 .login-container {
     display: flex;
     flex-direction: column;
@@ -16,7 +16,7 @@ body{
     background: linear-gradient(90deg, rgba(210,227,249,1) 0%, rgba(216,244,239,1) 100%);
   }
   
-  /* Form styles */
+
 .login-form {
     width: 100%;
     max-width: 400px;
@@ -26,7 +26,7 @@ body{
   }
   
   .form-title {
-    color: #0062f2; /* Primary blue for titles */
+    color: #0062f2; 
     text-align: center;
     margin-bottom: 2rem;
   }
@@ -42,7 +42,7 @@ body{
 .login-form  label {
     display: block;
     margin-bottom: 0.5rem;
-    color: #004085; /* Darker blue for text */
+    color: #004085; 
   }
   
 .login-form  input[type="email"],
@@ -51,19 +51,19 @@ body{
     width: 100%;
     /* height: 1rem; */
     padding: 0.75rem;
-    border: 1px solid #d5e7ff; /* Light blue for borders */
+    border: 1px solid #d5e7ff; 
     border-radius: 5px;
     margin-left: 0;
     margin-bottom: 1rem;
   }
   
-  /* Button styles */
+
 .login-form  button {
     width: 100%;
     padding: 0.8rem;
     border: none;
     border-radius: 5px;
-    background-color: #04bd90; /* Green for buttons */
+    background-color: #04bd90; 
     color: white;
     font-weight: bold;
     cursor: pointer;
@@ -71,36 +71,36 @@ body{
   }
   
   .login-form  button:hover {
-    background-color: #71c2ae; /* Lighter green on hover */
+    background-color: #71c2ae; 
   }
   
-  /* Link to switch between sign in and sign up */
+
   .sign-up-option {
     text-align: center;
     margin-top: 1rem;
-    color: #004085; /* Darker blue for text */
+    color: #004085; 
   }
   
   .sign-up-option span {
-    color: #04bd90; /* Green for clickable text */
+    color: #04bd90;
     cursor: pointer;
     text-decoration: underline;
   }
   
-  /* Rules & Regulations button */
+
   .login-form  button:last-child {
-    background-color: #d2e3f9; /* Lightest blue for secondary button */
-    color: #004085; /* Darker blue for text */
+    background-color: #d2e3f9; 
+    color: #004085; 
     margin-top: 1rem;
   }
   
   .login-form  button:last-child:hover {
-    background-color: #d5e7ff; /* Slightly darker blue on hover */
+    background-color: #d5e7ff; 
   }
   
-  /* Error message styles */
+
   .error-message {
-    color: #d9534f; /* Red for error messages */
+    color: #d9534f; 
     font-size: 0.875rem;
     margin-top: -0.5rem;
     margin-bottom: 1rem;

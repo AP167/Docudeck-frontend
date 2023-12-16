@@ -1,0 +1,62 @@
+.upload-doc-block{
+    height: 100vh;
+    overflow-y: scroll;
+}
+
+.comply-block{
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.spinner {
+    animation: spin 3s ease-in-out infinite;
+  }
+  
+  @keyframes spin {
+    0% {
+      transform: rotate(0deg);
+      color: #0062f2;
+    }
+    50%{
+        color: #04bd90;
+    }
+    100% {
+      transform: rotate(360deg);
+      color: #0062f2;
+    }
+  }
+
+.tcomp-res{
+    display: flex;
+    flex-direction: column;
+    align-items: center ;
+    width: 50%;
+}
+
+.tcomp-res>*{
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+
+.tcres-btn{
+    width: 150px;
+    padding: 10px;
+}
+
+
+.req-doc-form{
+    width: 100%;
+    height: 20vh;
+    background-color: burlywood;
+}
+
+.tcomp-res-container{
+    width: 100%;
+    height: 80vh;
+    background-color: coral;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}

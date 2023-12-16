@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
-import { Document, Page } from 'react-pdf';
 import { FaCheckCircle, FaSpinner } from 'react-icons/fa';
 import UploadPdf from './UploadPdf';
 import PdfViewer from './PdfViewer';
+import './styles/UploadTender.css'
 
 const UploadTender = () => {
   const [pdfFile, setPdfFile] = useState(null);
@@ -43,7 +43,7 @@ const UploadTender = () => {
         };
         setServerResponse(response);
         setIsLoading(false);
-    }, 2000);
+    }, 10000);
 
   };
 
@@ -57,8 +57,8 @@ const UploadTender = () => {
   };
 
   return (
-    <div style={{ display: 'flex', width: '100%' }}>
-      <div style={{ width: '50%' }}>
+    <div className='upload-tender-body' style={{ display: 'flex', width: '100%' }}>
+      <div className='upload-tender-block upload-doc-block' style={{ width: '50%' }}>
         {pdfFile ? (
           <PdfViewer pdfFile={pdfFile}/>
         ) : (
@@ -69,28 +69,30 @@ const UploadTender = () => {
           />
         )}
       </div>
-      <div style={{ width: '50%', backgroundColor: 'coral' }}>
+      <div className='upload-tender-block comply-block' style={{ width: '50%' }}>
+        <div className="req-doc-form"></div>
+        <div className="tcomp-res-container">
         {isLoading ? (
-          <FaSpinner className="spinner" />
+            <FaSpinner size="2em" className="spinner" />
         ) : serverResponse ? (
           serverResponse.complying ? (
-            <div>
+            <div className='tcomp-res card'>
               <p>{serverResponse.message}</p>
-              <FaCheckCircle size="3em" color="green" />
-              <button onClick={handlePublish}>Publish</button>
+              <FaCheckCircle size="3em" color="green"/>
+              <button className='primary-btn tcres-btn' onClick={handlePublish}>Publish</button>
             </div>
           ) : (
-            <div>
+            <div className='tcomp-res card'>
               <p>Violating rules:</p>
               <ul>
                 {serverResponse.violatingRules.map((rule, index) => (
                   <li key={index}>{rule}</li>
                 ))}
               </ul>
-              <button onClick={handleUploadAnotherDoc}>Upload another doc</button>
+              <button className='primary-btn tcres-btn' onClick={handleUploadAnotherDoc}>Upload another doc</button>
             </div>
           )
-        ) : null}
+        ) : null}</div>
       </div>
     </div>
   );
