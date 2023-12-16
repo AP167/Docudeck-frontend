@@ -58,6 +58,7 @@
     outline: none;
 }
 
+
 #search-icon{
     color: royalblue;
     padding-left: 5px;
@@ -99,10 +100,11 @@
 
 .search-res-msg{
     height: 20px;
-    width: 100%;
+    width: 95%;
     background-color: #ddd;
     padding: 40px;
-    margin: 40px 0 40px -20px;
+    margin: 40px 0 40px -10px;
+    border-radius: 12px;
 }
 
 
@@ -118,5 +120,20 @@
 }
 
 .download{
-    margin: 10px;
+    margin: -7px 10px;
+    padding: 10px 15px;
+    font-size: 15px;
+    text-decoration: none;
+}
+
+.back-to-reults{
+    padding: 10px;
+    font-size: 15px;
+    text-decoration: none;
+}
+
+.search-filter-container input,
+.inp{
+    border: 1px solid #d5e7ff;
+    border-radius: 5px;
 }

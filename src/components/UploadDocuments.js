@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { FaCheckCircle } from 'react-icons/fa'; // Importing the checkmark icon from react-icons
 import { useNavigate } from 'react-router-dom';
+import './styles/UploadDocuments.css'
 
 function UploadDocument() {
   const [requiredDocs, setRequiredDocs] = useState([]);
@@ -63,21 +64,31 @@ function UploadDocument() {
   }
 
   return (
-    <form onSubmit={handleSubmit}>
-      {requiredDocs.map((docName) => (
-        <div key={docName}>
-          <label>{docName}</label>
-          <input
-            type="file"
-            accept="application/pdf"
-            onChange={(e) => handleFileChange(docName, e.target.files[0])}
-          />
+      <form onSubmit={handleSubmit}>
+        <div className="dashboard-body tender-show ">
+          <span className="tname">
+             <h1>Tender Name</h1>
+          </span>
         </div>
-      ))}
-      <button type="submit" disabled={requiredDocs.length !== Object.keys(uploadedFiles).length}>
-        Submit
-      </button>
-    </form>
+        <div className="dashboard-body tender-show">
+          <div className="card tdb-card">
+              {requiredDocs.map((docName) => (
+                <div className='tender-card ' key={docName}>
+                  <label className='names'>{docName} </label>
+                  <input
+                    className='file-input'
+                    type="file"
+                    accept="application/pdf"
+                    onChange={(e) => handleFileChange(docName, e.target.files[0])}
+                  />
+                </div>
+              ))}
+            <button className='primary-btn submit-btn' type="submit" disabled={requiredDocs.length !== Object.keys(uploadedFiles).length}>
+              Submit
+            </button>
+          </div>
+        </div>
+      </form>
   );
 }
 
