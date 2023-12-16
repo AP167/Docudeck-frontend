@@ -17,18 +17,20 @@ const UploadTender = () => {
 
     // Here you would send the file to the database/server
     // For example, using FormData to append the file and send it via POST request
-    const formData = new FormData();
-    formData.append('file', file);
+    // const formData = new FormData();
+    // formData.append('tenderId',1);
+    // formData.append('taId',1);
+    // formData.append('tenderName','abc');
+    // formData.append('date',"2023-12-16");
+    // formData.append('tender', file);
 
-    // Replace with actual API call to submit the PDF
-    // const response = await fetch('/submit-pdf', {
+    // const response = await fetch('http://localhost:5000/add-tender', {
     //   method: 'POST',
     //   body: formData,
     // });
 
     // if (response.ok) {
-    //   const result = await response.json();
-    //   setServerResponse(result); // Assuming the API returns a JSON object with the response
+    //   console.log("tender submitted")
     // } else {
     //   console.error('Failed to submit PDF');
     // }

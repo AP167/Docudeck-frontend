@@ -1,10 +1,11 @@
 import React from 'react';
+import { FaDownload } from 'react-icons/fa'; 
 import './styles/VendorParticipation.css';
 
 const VendorParticipation = () => {
-  const vendors = [
+    const vendors = [
     { 
-      tender_no:'1',
+      tender_no: '1',
       name: 'Vendor A',  
       docs: [
         { name: 'Doc A1', link: '/a.pdf' },
@@ -13,7 +14,16 @@ const VendorParticipation = () => {
       comment: 'A'
     },
     { 
-      tender_no:'2',
+      tender_no: '3',
+      name: 'Vendor D', 
+      docs: [
+        { name: 'Doc C1', link: '/a.pdf' },
+        { name: 'Doc C2', link: '/b.pdf' },
+      ],
+      comment: 'D'
+    },
+    { 
+      tender_no: '1',
       name: 'Vendor B', 
       docs: [
         { name: 'Doc B1', link: '/a.pdf' },
@@ -22,65 +32,83 @@ const VendorParticipation = () => {
       comment: 'B'
     },
     { 
-      tender_no:'2',
-      name: 'Vendor B', 
+      tender_no: '2',
+      name: 'Vendor D', 
       docs: [
-        { name: 'Doc B1', link: '/a.pdf' },
-        { name: 'Doc B2', link: '/b.pdf' },
+        { name: 'Doc C1', link: '/a.pdf' },
+        { name: 'Doc C2', link: '/b.pdf' },
       ],
-      comment: 'B'
+      comment: 'D'
     },
     { 
-      tender_no:'2',
-      name: 'Vendor B', 
+      tender_no: '1',
+      name: 'Vendor C', 
       docs: [
-        { name: 'Doc B1', link: '/a.pdf' },
-        { name: 'Doc B2', link: '/b.pdf' },
+        { name: 'Doc C1', link: '/a.pdf' },
+        { name: 'Doc C2', link: '/b.pdf' },
       ],
-      comment: 'B'
+      comment: 'C'
     },
-    { 
-      tender_no:'2',
-      name: 'Vendor B', 
-      docs: [
-        { name: 'Doc B1', link: '/a.pdf' },
-        { name: 'Doc B2', link: '/b.pdf' },
-      ],
-      comment: 'B'
-    }
   ];
 
+  const handleDownload = (fileUrl, fileName) => {
+    const link = document.createElement('a');
+    link.href = fileUrl;
+    link.download = fileName || 'downloaded-file';
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  };
+
+  // Group vendors by tender_no using an object
+  const groupedVendors = vendors.reduce((acc, vendor) => {
+    const { tender_no, name, docs, comment } = vendor;
+    if (!acc[tender_no]) {
+      acc[tender_no] = [];
+    }
+    const existingVendor = acc[tender_no].find(v => v.name === name);
+
+    if (existingVendor) {
+      existingVendor.docs = existingVendor.docs.concat(docs);
+    } else {
+      acc[tender_no].push({ name, docs, comment });
+    }
+
+    return acc;
+  }, {});
+
   return (
-    <>
-      <div className="outer">
-        <div className='container'>
-          {vendors.map((vendor, index) => (
-            <div className='vendor' key={index}>
-              <span className='details'>
-                Tender No: {vendor.tender_no}
-              </span>
-              <span className='details'>
-                Name: {vendor.name}
-              </span>
-              <span className='details'>
-                Docs: 
-                {vendor.docs.map((doc, docIndex) => (
-                  <span key={docIndex}>
-                    <a href={doc.link} target="_blank" rel="noopener noreferrer">
-                      {doc.name}
-                    </a>
-                    {docIndex < vendor.docs.length - 1 && ', '}
-                  </span>
-                ))}
-              </span>
-              <span className='details'>
-                Comment: {vendor.comment}
-              </span>
-            </div>
-          ))}
-        </div>
+    <div className="outer">
+      <div className='container'>
+        {Object.entries(groupedVendors).map(([tender_no, vendorsForTender]) => (
+          <div key={tender_no}>
+            <h2>Tender No: {tender_no}</h2>
+            {vendorsForTender.map((vendor, index) => (
+              <div className='vendor' key={index}>
+                <span className='details'>
+                  Name: {vendor.name}
+                </span>
+                <span className='details'>
+                  Docs: 
+                  {vendor.docs.map((doc, docIndex) => (
+                    <span key={docIndex}>
+                      <a href={doc.link} target="_blank" rel="noopener noreferrer">
+                        {doc.name}
+                      </a>
+                      <FaDownload onClick={() => handleDownload(doc.link, doc.name)} className="download-icon" />
+                      {docIndex < vendor.docs.length - 1 && ', '}
+                    </span>
+                  ))}
+                </span>
+                <span className='details'>
+                  Comment: {vendor.comment}
+                </span>
+              </div>
+            ))}
+          </div>
+        ))}
       </div>
-    </>
+    </div>
   );
 }
 
