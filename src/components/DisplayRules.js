@@ -4,6 +4,7 @@ import { FaSearch } from 'react-icons/fa';
 import PdfViewer from './PdfViewer';
 import './styles/DisplayRules.css'
 import { FaRegCalendarAlt } from 'react-icons/fa';
+import Chatbot from './Chatbot';
 
 const DisplayRules = () => {
   const [searchTerm, setSearchTerm] = useState('');
@@ -90,6 +91,7 @@ const DisplayRules = () => {
 
   return (
     <>
+    <Chatbot />
     <div className='search-container'>
       <div className="searchbar-container">
         <div className='searchbar-wrapper'>

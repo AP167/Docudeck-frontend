@@ -1,0 +1,52 @@
+.tender-card {
+    background-color: #fbfdff; /* Lightest blue background */
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 1rem;
+    margin: 1rem;
+    width: 100%;
+    max-width: 400px;
+    box-sizing: border-box;
+  }
+  
+  .tender-card h3 {
+    color: #19324f; /* Primary blue for titles */
+    margin-bottom: 0.5rem;
+  }
+  .tender-card h2 {
+    color: #19324f; /* Primary blue for titles */
+    margin-bottom: 0.5rem;
+  }
+  
+  .tender-card p {
+    color: #004085; /* Darker blue for text */
+    margin-bottom: 1rem;
+  }
+  
+  .button-container {
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  .tender-card button {
+    background-color: #04bd90; /* Green for buttons */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem; /* Space between icon and text */
+  }
+  
+  .tender-card button:hover {
+    background-color: #71c2ae; /* Lighter green on hover */
+  }
+  
+  /* Icons */
+  .tender-card .fa-download,
+  .tender-card .fa-eye {
+    font-size: 1rem;
+  }

@@ -25,7 +25,7 @@ const VendorDashboard = () => {
 
   return (
     <>
-      <TenderList tenders={tenders} />
+      <TenderList tenders={tenders} type={"vendor"} />
     </>
   )
 }

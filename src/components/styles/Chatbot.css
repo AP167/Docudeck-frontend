@@ -1,0 +1,125 @@
+.chatbot-container {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 1000;
+  }
+  
+  .chat-button {
+    background-color: #04bd90; /* Green color from the theme */
+    color: white;
+    border: none;
+    border-radius: 50%;
+    padding: 15px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    transition: all 0.3s ease;
+    width: 60px; /* Initial width */
+    height: 60px; /* Height to match width for circle */
+    position: relative;
+  }
+  
+  .chat-button .icon {
+    font-size: 24px;
+  }
+  
+  .chat-button .button-text {
+    white-space: nowrap;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    position: absolute;
+    left: 100%; /* Initially positioned outside the button */
+    pointer-events: none; /* Prevent mouse events on hidden text */
+  }
+  
+  .chat-button:hover {
+    border-radius: 20px; /* Rounded rectangle on hover */
+    width: 200px; /* Width to fit text on hover */
+  }
+  
+  .chat-button:hover .button-text {
+    opacity: 1;
+  }
+  
+  .chat-interface {
+    position: absolute;
+    bottom: 70px; /* Position above the button */
+    right: 0;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 10px;
+    width: 300px;
+    height: 400px; /* Fixed height for chat interface */
+    display: block;
+    overflow: hidden;
+  }
+  
+  .messages-container {
+    height: 340px; /* Height minus input area height */
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column; /* Start from top */
+  }
+  
+  .message {
+    margin: 5px;
+    padding: 5px 10px;
+    border-radius: 10px;
+    max-width: calc(100% - 20px); /* Width shorter than input field */
+    position: relative;
+    display: flex;
+  }
+  
+  .message.user {
+    background-color: #d5e7ff; /* Light blue for user messages */
+    align-self: flex-end;
+    border-top-right-radius: 0; /* Sharp corner for user messages */
+  }
+  
+  .message.ai {
+    background-color: #71c2ae; /* Different color for AI messages */
+    align-self: flex-start;
+    border-top-left-radius: 0; /* Sharp corner for AI messages */
+  }
+  
+  .message-text {
+    flex-grow: 1;
+  }
+  
+  .loading-dots {
+    align-self: center;
+    margin-left: 5px;
+    animation: wiggle 1s infinite;
+  }
+  
+  @keyframes wiggle {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-5px); }
+  }
+  
+  .input-area {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10px;
+  }
+  
+  .input-area input {
+    flex-grow: 1;
+    padding: 10px;
+    border: 1px solid #d5e7ff;
+    border-radius: 5px;
+    margin-right: 10px;
+  }
+  
+  .input-area button {
+    padding: 10px;
+    background-color: #04bd90; /* Green color from the theme */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
