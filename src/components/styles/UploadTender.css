@@ -29,11 +29,15 @@
   }
 
 .tcomp-res{
-    display: flex;
-    flex-direction: column;
-    align-items: center ;
+    background-color: #f9fbfd;
+    padding: 2rem;
+    margin-top: 30px;
+    border-radius: 10px;
     width: 50%;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
 }
+
 
 .tcomp-res>*{
     margin-top: 15px;
@@ -48,14 +52,17 @@
 
 .req-doc-form{
     width: 100%;
-    height: 20vh;
-    background-color: burlywood;
+    /* height: 15vh; */
+    /* border: 1px solid #d5e7ff;  */
+}
+.multiselect{
+    margin: 25px;
+    
 }
 
 .tcomp-res-container{
     width: 100%;
-    height: 80vh;
-    background-color: coral;
+    height: 100vh;
     display: flex;
     align-items: center;
     justify-content: center;

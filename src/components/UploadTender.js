@@ -2,12 +2,20 @@ import React, { useState } from 'react';
 import { FaCheckCircle, FaSpinner } from 'react-icons/fa';
 import UploadPdf from './UploadPdf';
 import PdfViewer from './PdfViewer';
-import './styles/UploadTender.css'
+import './styles/UploadTender.css';
+import Select from 'react-select';
 
 const UploadTender = () => {
   const [pdfFile, setPdfFile] = useState(null);
   const [serverResponse, setServerResponse] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
+  const [selectedOptions, setSelectedOptions] = useState([]);
+
+  const options = [
+    { value: 'aadhar', label: 'Aadhar card' },
+    { value: 'pan', label: 'Pan card' },
+    { value: 'voter', label: 'Voter card' },
+  ];
 
   const onUpload = async (file) => {
     const fileUrl = URL.createObjectURL(file);
@@ -72,15 +80,26 @@ const UploadTender = () => {
         )}
       </div>
       <div className='upload-tender-block comply-block' style={{ width: '50%' }}>
-        <div className="req-doc-form"></div>
         <div className="tcomp-res-container">
         {isLoading ? (
             <FaSpinner size="2em" className="spinner" />
         ) : serverResponse ? (
           serverResponse.complying ? (
-            <div className='tcomp-res card'>
+            <div className='tcomp-res a'>
               <p>{serverResponse.message}</p>
-              <FaCheckCircle size="3em" color="green"/>
+              <p>
+                 <FaCheckCircle size="3em" color="green"/>
+              </p>
+              <div className="req-doc-form">
+                <Select
+                    className='multiselect'
+                    isMulti
+                    options={options}
+                    value={selectedOptions}
+                    onChange={setSelectedOptions}
+                    placeholder="Required Documents for this Tender"
+                  />
+                </div>
               <button className='primary-btn tcres-btn' onClick={handlePublish}>Publish</button>
             </div>
           ) : (
