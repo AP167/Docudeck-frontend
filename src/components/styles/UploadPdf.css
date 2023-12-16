@@ -20,7 +20,7 @@
   }
 
   .mainBtn{
-    background-color: #e5322d;
+    background-color: #0062f2;
     cursor: pointer;
     box-sizing: border-box;
     padding: 24px 32px;
@@ -30,10 +30,10 @@
     border-radius: 12px;
     font-weight: bold;
     box-shadow: 0 3px 6px 0 rgba(0,0,0,.14);
-    transition: background-color 0.5s ease-in-out;
+    transition: background-color 0.3s ease-in-out;
   } 
   .mainBtn:hover{
-    background-color: rgb(159, 2, 2);  
+    background-color: #023e99;  
   }
 
   .dropMsg{

@@ -1,0 +1,51 @@
+.floating-button-container {
+    position: fixed;
+    top: 20px; /* Adjust as needed */
+    right: 20px; /* Adjust as needed */
+    z-index: 1000; /* Ensure it's above other elements */
+  }
+  
+  .floating-button {
+    background-color: #0062f2; /* Primary blue color */
+    color: white;
+    border: none;
+    border-radius: 50%;
+    padding: 15px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    overflow: hidden;
+    transition: width 0.3s ease, border-radius 0.3s ease;
+    width: 60px; /* Initial width */
+    height: 60px; /* Height to match width for circle */
+    position: relative;
+  }
+  
+  .floating-button:hover {
+    border-radius: 15px; /* Rounded rectangle on hover */
+    width: 250px; /* Width to fit text on hover */
+  }
+  
+  .icon {
+    font-size: 24px; /* Icon size */
+    transition: transform 0.3s ease;
+    position: absolute;
+    left: 15px; /* Icon position from the left */
+  }
+  
+  .button-text {
+    white-space: nowrap;
+    opacity: 0;
+    transition: opacity 0.3s ease 0.3s; /* Delay the text appearance */
+    position: absolute;
+    left: 60px; /* Text position from the left */
+  }
+  
+  .floating-button:hover .icon {
+    transform: translateX(0); /* Keep the icon at the initial position */
+  }
+  
+  .floating-button:hover .button-text {
+    opacity: 1; /* Show the text after the button expands */
+  }

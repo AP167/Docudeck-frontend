@@ -7,6 +7,7 @@ import SignIn from "./components/SignIn"
 import VendorParticipation from "./components/VendorParticipation"
 import UploadDocuments from "./components/UploadDocuments"
 import UploadTender from "./components/UploadTender"
+import './components/styles/Common.css'
 
 
 
