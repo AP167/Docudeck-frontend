@@ -45,9 +45,9 @@
     justify-content: center;
     background-color: #f5f5fa;
     padding: 70px;
-    margin: 40px -7px 0px;
-    height: 70vh;  
-    box-shadow: inset 0px 10px 10px -10px #888888;
+    /* margin: 40px -7px 0px; */
+    height: 80vh;  
+    /* box-shadow: inset 0px 10px 10px -10px #888888; */
   }
    
   .uploaded-pdf {

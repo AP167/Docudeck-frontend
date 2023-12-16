@@ -1,0 +1,43 @@
+.submit-btn{
+    padding: 18px 32px;
+    margin: 15px;
+    font-size: 15px;
+}
+.submit-btn:hover{
+    background-color: #023e99;  
+}
+.names{
+    /* float: left; */
+    display: inline;
+    justify-content: center;
+    text-align: center;
+    padding: 7px;
+    margin: 3px;
+    margin-left: 102px;
+    background-color: #e7eefe;
+    color: black;
+    margin-top: -6px;
+    width: auto;
+    min-width: 300px;
+    border-radius: 7px;
+}
+.file-input{
+    display: inline;
+    justify-content: center;
+    text-align: center;
+    padding: 7px;
+    margin-top: -7px;
+    margin-left: 250px;
+    background-color: #e7eefe;
+    width: auto;
+    min-width: 200px;
+    border-radius: 7px;
+}
+
+.input-card{
+    width: 60%;
+    display: block;
+    display: flex;
+    justify-content: center;
+    margin: 1rem auto; 
+}

@@ -60,7 +60,7 @@ const VendorParticipation = () => {
   }, {});
 
   return (
-    <div className="dashboard-body">
+    <div className="dashboard-body body-container">
       <div className='card tdb-card'>
           {Object.entries(groupedVendors).map(([tender_no, vendorsForTender]) => (
             <div className='tender-list vendorContainer' key={tender_no}>

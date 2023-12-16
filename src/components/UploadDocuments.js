@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { FaCheckCircle } from 'react-icons/fa'; // Importing the checkmark icon from react-icons
 import { useNavigate } from 'react-router-dom';
+import './styles/UploadDocuments.css'
 
 function UploadDocument() {
   const [requiredDocs, setRequiredDocs] = useState([]);
@@ -64,19 +65,20 @@ function UploadDocument() {
 
   return (
       <form onSubmit={handleSubmit}>
-        <div className="dashboard-body">
+        <div className="dashboard-body body-container">
           <div className="card tdb-card">
               {requiredDocs.map((docName) => (
-                <div className='tender-card' key={docName}>
-                  <label>{docName}</label>
+                <div className='tender-card ' key={docName}>
+                  <label className='names'>{docName} </label>
                   <input
+                    className='file-input'
                     type="file"
                     accept="application/pdf"
                     onChange={(e) => handleFileChange(docName, e.target.files[0])}
                   />
                 </div>
               ))}
-            <button type="submit" disabled={requiredDocs.length !== Object.keys(uploadedFiles).length}>
+            <button className='primary-btn submit-btn' type="submit" disabled={requiredDocs.length !== Object.keys(uploadedFiles).length}>
               Submit
             </button>
           </div>
