@@ -90,9 +90,9 @@ const DisplayRules = () => {
   };
 
   return (
-    <>
+    <div className='body-container'>
     <Chatbot />
-    <div className='search-container'>
+    <div className='search-container card'>
       <div className="searchbar-container">
         <div className='searchbar-wrapper'>
           <FaSearch id="search-icon" />
@@ -104,7 +104,7 @@ const DisplayRules = () => {
             onChange={(e) => setSearchTerm(e.target.value)}
           />
         </div>
-        <button className='search-btn' onClick={handleSearch}>Search</button>
+        <button className='search-btn primary-btn' onClick={handleSearch}>Search</button>
       </div>
       <div className='search-filter-container'>
         <div className="docno-container filter-container">
@@ -185,12 +185,12 @@ const DisplayRules = () => {
             </select>
           </label>
         </div>
-        <button className='filter-btn' onClick={handleReset}>Apply Filter</button>
-        <button className='reset-btn' onClick={handleReset}>Reset</button>
+        <button className='filter-btn tertiary-btn' onClick={handleReset}>Apply Filter</button>
+        <button className='reset-btn tertiary-btn' onClick={handleReset}>Reset</button>
       </div>
     </div>
 
-    <div className='results-container'>
+    <div className='results-container card'>
       {selectedDocument === null ? (
           <div>
             <div className='search-res-msg'>
@@ -225,7 +225,7 @@ const DisplayRules = () => {
           </div>
         )}
     </div>
-    </>
+    </div>
   );
 }
 

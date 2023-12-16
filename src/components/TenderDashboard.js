@@ -43,7 +43,7 @@ const TenderDashboard = () => {
     };
 
     return (
-        <div className='dashboard-body'>
+        <div className='dashboard-body body-container'>
             <div className="card tdb-card">
                 <button onClick={handleCreateTender} className="create-tender-button">
                     Create Tender

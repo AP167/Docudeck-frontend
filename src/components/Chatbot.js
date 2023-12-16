@@ -34,12 +34,12 @@ const Chatbot = () => {
       {isChatOpen && (
         <div className="chat-interface">
           <div className="messages-container">
-            {messages.map((msg, index) => (
-              <div key={index} className={`message ${msg.from}`}>
-                {msg.loading ? <div className="loading-dots">...</div> : <span className="message-text">{msg.text}</span>}
-              </div>
-            ))}
-          </div>
+              {messages.map((msg, index) => (
+                <div key={index} className={`message ${msg.from}`}>
+                  {msg.loading ? <div className="loading-dots">...</div> : <span className="message-text">{msg.text}</span>}
+                </div>
+              ))}
+            </div>
           <div className="input-area">
             <input
               type="text"

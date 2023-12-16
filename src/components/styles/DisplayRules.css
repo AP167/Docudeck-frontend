@@ -1,27 +1,7 @@
-*{
-    font-family: Graphik,Arial,sans-serif;
-}
-
-
-.date-picker-container {
-display: inline-block;
-position: relative;
-}
-
-.datepicker-label {
-display: flex;
-align-items: center;
-}
-
-.calendar-icon {
-margin-right: 5px;
-color: gray; /* Change the color as needed */
-}
-  
-.date-input {
-padding: 5px;
-font-size: 14px;
-/* Additional styling as needed */
+.rules-body{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .search-container{

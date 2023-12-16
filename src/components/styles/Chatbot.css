@@ -35,6 +35,7 @@
     pointer-events: none; /* Prevent mouse events on hidden text */
   }
   
+  
   .chat-button:hover {
     border-radius: 20px; /* Rounded rectangle on hover */
     width: 200px; /* Width to fit text on hover */
@@ -62,12 +63,14 @@
     height: 340px; /* Height minus input area height */
     overflow-y: auto;
     display: flex;
-    flex-direction: column; /* Start from top */
+    flex-direction: column; /* Start from bottom */
+    justify-content: flex-end;
   }
   
   .message {
     margin: 5px;
-    padding: 5px 10px;
+    padding: 10px 15px;
+    font-size: 0.9rem;
     border-radius: 10px;
     max-width: calc(100% - 20px); /* Width shorter than input field */
     position: relative;
@@ -81,7 +84,8 @@
   }
   
   .message.ai {
-    background-color: #71c2ae; /* Different color for AI messages */
+    background-color: #0062f2; /* Different color for AI messages */
+    color: white;
     align-self: flex-start;
     border-top-left-radius: 0; /* Sharp corner for AI messages */
   }
