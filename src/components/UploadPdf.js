@@ -46,7 +46,7 @@ const UploadPdf = ({ onUpload, uploadHeader, uploadDescription }) => {
             <p>{uploadedPDF.name}</p>
             <a href={URL.createObjectURL(uploadedPDF)} target="_blank" rel="noopener noreferrer">
                 View Uploaded PDF
-              </a>
+            </a>
           </div>
         )}
       </div>

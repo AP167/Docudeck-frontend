@@ -62,3 +62,32 @@
 .tname h2{
     margin-left: 25px;
 }
+.successfully-submitted{
+    background-color: #f9fbfd; 
+    padding: 2rem;
+    margin: auto ;
+    margin-top: 10%;
+    text-align: center;
+    border-radius: 10px;
+    width: 40%;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+.sample-comments{
+    display: block;
+    min-height: 75px;
+    text-align: center;
+    padding: 7px;
+    margin: 3px;
+    /* margin-left: 450px; */
+    margin-bottom: 20px;
+    background-color: #e7eefe;
+    color: black;
+    /* min-width: 100px; */
+    border-radius: 7px;
+}
+
+.back-to-dashboard{
+    padding: 10px;
+    font-size: 15px;
+    text-decoration: none;
+}
