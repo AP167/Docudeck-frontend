@@ -8,6 +8,15 @@ const TenderCard = ({ tender, type }) => {
   let navigate = useNavigate();
   const handleDownload = () => {
     // Handle download logic here
+    const blob = new Blob([tender], { type: 'application/pdf' });
+    const url = URL.createObjectURL(blob);
+
+    const link = document.createElement('a');
+    link.href = url;
+    link.download = ` ${tender.name}`; 
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
     console.log(`Downloading document for tender: ${tender.name}`);
   };
 
@@ -30,9 +39,9 @@ const TenderCard = ({ tender, type }) => {
       <h3>{tender.name}</h3>
       <p>{tender.description}</p>
       <div className="button-container">
-        <button onClick={handleDownload}>
-          <FaDownload /> Download
-        </button>
+          <button onClick={handleDownload}>
+            <FaDownload /> Download
+          </button>
         <button onClick={handleView}>
           { type === "vendor" ? "Participate" : <> Proceed to Technical Evaluation</>}
         </button>
