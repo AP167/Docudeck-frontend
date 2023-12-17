@@ -17,7 +17,7 @@
 
 .floating-navbar{
     height: 200px;
-    width: 320px;
+    width: 290px;
     background-color: #0062f2; 
     position: fixed ;
     top: 40px;
@@ -63,13 +63,14 @@
     
 }
 
-.floating-nav-links a{
+.floating-nav-links a,.sign-out{
     color: white;
     text-decoration: none;
     font-family: 'Montserrat', sans-serif;
     font-weight: 300;
+    cursor: pointer;
 }
-.floating-nav-links a::after {
+.floating-nav-links a::after,.sign-out::after {
     display: block;
     content: attr(data-tooltip);
     font-weight: bold;
@@ -81,6 +82,6 @@
   }
 
 
-.floating-nav-links a:hover{
+.floating-nav-links a:hover, .sign-out:hover{
     font-weight: bold;
 }

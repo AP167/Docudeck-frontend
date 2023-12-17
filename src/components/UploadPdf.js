@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useDropzone } from 'react-dropzone';
 import './styles/UploadPdf.css';
+import FloatingNavbar from './FloatingNavbar';
 
 const UploadPdf = ({ onUpload, uploadHeader, uploadDescription }) => {
     const [uploadedPDF, setUploadedPDF] = useState(null);
@@ -27,6 +28,7 @@ const UploadPdf = ({ onUpload, uploadHeader, uploadDescription }) => {
 
   return (
     <div className='upload'>
+      <FloatingNavbar />
       <div {...getRootProps()} className="dropzone">
         <div>
         <h1 className="heading">{uploadHeader}</h1>

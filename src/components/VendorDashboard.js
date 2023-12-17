@@ -1,7 +1,7 @@
 import React from 'react'
 import { useState, useEffect } from 'react';
 import TenderList from './TenderList'
-
+import FloatingNavbar from './FloatingNavbar';
 
 const VendorDashboard = () => {
   const [tenders, setTenders] = useState([{name: 'tender 1', description: '1 ghjgj'}, {name: 'tender 2', description: '2 klfjfj'}]);
@@ -38,6 +38,7 @@ const VendorDashboard = () => {
 
   return (
     <>
+      <FloatingNavbar />
       <div className="dashboard-body body-container">
         <div className="card tenders-published">
           <h2>Tenders Published</h2>

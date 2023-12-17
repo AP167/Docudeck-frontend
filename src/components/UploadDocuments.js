@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { FaCheckCircle } from 'react-icons/fa'; // Importing the checkmark icon from react-icons
 import { useNavigate, useLocation } from 'react-router-dom';
-import './styles/UploadDocuments.css'
+import './styles/UploadDocuments.css';
+import FloatingNavbar from './FloatingNavbar';
 
 const UploadDocument =() => {
   const location = useLocation();
@@ -60,6 +61,7 @@ const UploadDocument =() => {
   if (submissionSuccess) {
     return (
       <div className='successfully-submitted'>
+        <FloatingNavbar />
         <FaCheckCircle size="3em" color="green" />
         <div>
            <p>Documents Submitted Successfully  </p>

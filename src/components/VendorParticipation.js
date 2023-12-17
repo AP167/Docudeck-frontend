@@ -2,6 +2,7 @@ import React from 'react';
 import { FaDownload } from 'react-icons/fa'; 
 import './styles/VendorParticipation.css';
 import { useLocation } from 'react-router-dom';
+import FloatingNavbar from './FloatingNavbar';
 
 const VendorParticipation = () => {
     const location = useLocation();
@@ -65,6 +66,7 @@ const VendorParticipation = () => {
 
   return (
     <div className="dashboard-body body-container">
+      <FloatingNavbar />
       <div className='card tdb-card'>
           {Object.entries(groupedVendors).map(([tender_no, vendorsForTender]) => (
             <div className='tender-list vendorContainer' key={tender_no}>

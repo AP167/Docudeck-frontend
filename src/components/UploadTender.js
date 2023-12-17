@@ -4,6 +4,7 @@ import UploadPdf from './UploadPdf';
 import PdfViewer from './PdfViewer';
 import './styles/UploadTender.css';
 import Select from 'react-select';
+import FloatingNavbar from './FloatingNavbar';
 
 const UploadTender = () => {
   const [pdfFile, setPdfFile] = useState(null);
@@ -71,6 +72,7 @@ const UploadTender = () => {
 
   return (
     <div className='upload-tender-body' style={{ display: 'flex', width: '100%' }}>
+      <FloatingNavbar />
       <div className='upload-tender-block upload-doc-block' style={{ width: '50%' }}>
         {pdfFile ? (
           <PdfViewer pdfFile={pdfFile}/>
