@@ -59,11 +59,17 @@ const UploadDocument =() => {
 
   if (submissionSuccess) {
     return (
-      <div>
+      <div className='successfully-submitted'>
         <FaCheckCircle size="3em" color="green" />
-        <p>Successfully submitted documents</p>
-        <textarea value={comments} readOnly />
-        <button onClick={() => navigate('/vendor-dashboard')}>Go back to dashboard</button>
+        <div>
+           <p>Documents Submitted Successfully  </p>
+        </div>
+        <div>
+           <span className='sample-comments'>{comments}</span>
+        </div>
+        <div>
+          <button onClick={() => navigate('/vendor-dashboard')} className='tertiary-btn back-to-dashboard'>Go back to dashboard</button>
+        </div>
       </div>
     );
   }
