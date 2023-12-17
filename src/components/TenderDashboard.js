@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import TenderList from './TenderList';
 import './styles/TenderDashboard.css'
+import FloatingNavbar from './FloatingNavbar';
 
 
 const TenderDashboard = () => {
@@ -40,6 +41,7 @@ const TenderDashboard = () => {
 
     return (
         <div className='dashboard-body body-container'>
+            <FloatingNavbar />
             <div className="card tdb-card">
                 <button onClick={() => navigate('/upload-tender')} className="create-tender-button">
                     Create Tender
