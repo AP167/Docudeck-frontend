@@ -1,9 +1,8 @@
 import React from 'react'
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { FaSearch } from 'react-icons/fa';
 import PdfViewer from './PdfViewer';
 import './styles/DisplayRules.css'
-import { FaRegCalendarAlt } from 'react-icons/fa';
 import Chatbot from './Chatbot';
 
 const DisplayRules = () => {
@@ -27,7 +26,6 @@ const DisplayRules = () => {
   const deptList = ['Department of Finance', 'Department of Coal', 'Department of Power'];
   const ministryList = ['Ministry of Finance', 'Ministry of Coal', 'Ministry of Power'];
 
-  const pdfFile = "http://africau.edu/images/default/sample.pdf"
 
   const handleSearch = async () => {
     const searchParams = {

@@ -11,7 +11,6 @@ const VendorDashboard = () => {
         // Replace this with your actual API call
         const fetchData = async () => {
           try {
-            const taId = '1';
             const apiUrl = `http://localhost:5000/fetch-tenders`;
     
             const response = await fetch(apiUrl, {
@@ -39,6 +38,9 @@ const VendorDashboard = () => {
   return (
     <>
       <div className="dashboard-body body-container">
+        <div className="card tenders-published">
+          <h2>Tenders Published</h2>
+        </div>
         <div className="card">
           <div className="tdb-card">
               <TenderList tenders={tenders} type={"vendor"} />

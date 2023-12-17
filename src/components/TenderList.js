@@ -1,6 +1,6 @@
 import React from 'react'
 import { useNavigate } from 'react-router-dom';
-import { FaDownload, FaEye } from 'react-icons/fa';
+import { FaDownload } from 'react-icons/fa';
 import './styles/TenderList.css'
 
 const TenderCard = ({ tender, type }) => {
