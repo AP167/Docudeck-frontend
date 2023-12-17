@@ -3,71 +3,36 @@ import { useState } from 'react';
 import { useNavigate } from 'react-router-dom'
 import './styles/SignIn.css'
 import FloatingButton from './FloatingButton';
+import { useAuth } from '../AuthContext';
 
 const SignIn = (props) => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [confirmPassword, setConfirmPassword] = useState('');
     const [role, setRole] = useState('');
+    const {signin, signup} = useAuth();
+    
 
     let navigate = useNavigate();
 
     const handleSubmit = async (event) => {
         event.preventDefault();
-        // Handle the form submission logic here
         console.log(email, password, confirmPassword, role);
 
         if(props.sign === "In"){
-            const data = {
-              email: email,
-              password: password,
-              userType: "role", 
-            };
-            console.log(JSON.stringify(data))
-            try {
-              const response = await fetch('http://localhost:5000/login', {
-                  method: 'POST',
-                  headers: {
-                      'Content-Type': 'application/json',
-                  },
-                  body: JSON.stringify(data),
-              });
-    
-              if (response.ok) {
-                  console.log('Login Successful');
-              } else {
-                  console.log('Invalid Credentials');
-              }
+          try { // Sign In
+            const userCredential = await signin(email, password);
+            console.log('User created:', userCredential.user);
           } catch (error) {
-              console.error('Error during login:', error);
+            console.error('Failed to log in:', error);
           }
-  
-          }
-          else{
-            const data = {
-              email: email,
-              password: password,
-              userType: role, 
-            };
-            console.log(JSON.stringify(data))
-            try {
-              const response = await fetch('http://localhost:5000/sign-up', {
-                  method: 'PUT',
-                  headers: {
-                      'Content-Type': 'application/json',
-                  },
-                  body: JSON.stringify(data),
-              });
-    
-              if (response.ok) {
-                  console.log('Sign up Successful');
-              } else {
-                  console.log('Invalid Credentials');
-              }
+        } else{ // Sign Out
+          try {
+            const userCredential = await signup(email, password);
+            console.log('User created:', userCredential.user);
           } catch (error) {
-              console.error('Error during Sign up:', error);
+            console.error('Failed to log in:', error);
           }
-  
         }
 
     };
