@@ -8,14 +8,17 @@ const UploadRule = () => {
     console.log(file)
 
     const formData = new FormData();
-    formData.append('policy', file);
     formData.append('pmId', '3'); 
     formData.append('policyName', 'abc');
+    formData.append('policy', file);
   
     try {
-      const response = await fetch('http://localhost:5000/add-policy', {
+      const response = await fetch('http://docudeck.pythonanywhere.com/add-policy', {
         method: 'PUT',
         body: formData,
+        headers: {
+          'Access-Control-Allow-Origin': '*', 
+        },
       });
   
       if (response.ok) {

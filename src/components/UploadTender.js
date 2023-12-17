@@ -23,25 +23,26 @@ const UploadTender = () => {
 
     setIsLoading(true);
 
-    // Here you would send the file to the database/server
-    // For example, using FormData to append the file and send it via POST request
-    // const formData = new FormData();
-    // formData.append('tenderId',1);
-    // formData.append('taId',1);
-    // formData.append('tenderName','abc');
-    // formData.append('date',"2023-12-16");
-    // formData.append('tender', file);
+    const formData = new FormData();
+    formData.append('tenderId',1);
+    formData.append('taId',1);
+    formData.append('tenderName','abc');
+    formData.append('date',"2023-12-16");
+    formData.append('tender', file);
 
-    // const response = await fetch('http://localhost:5000/add-tender', {
-    //   method: 'POST',
-    //   body: formData,
-    // });
+    const response = await fetch('https://docudeck.pythonanywhere.com/add-tender', {
+      method: 'POST',
+      body: formData,
+      headers: {
+        'Access-Control-Allow-Origin': '*', 
+      },
+    });
 
-    // if (response.ok) {
-    //   console.log("tender submitted")
-    // } else {
-    //   console.error('Failed to submit PDF');
-    // }
+    if (response.ok) {
+      console.log("tender submitted")
+    } else {
+      console.error('Failed to submit PDF');
+    }
 
     setTimeout(() => {
         // Simulated server response
