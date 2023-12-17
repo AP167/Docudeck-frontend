@@ -14,7 +14,6 @@ const TenderDashboard = () => {
         // Replace this with your actual API call
         const fetchData = async () => {
             try {
-                const taId = '1';
                 const apiUrl = `http://localhost:5000/fetch-tenders`;
         
                 const response = await fetch(apiUrl, {
