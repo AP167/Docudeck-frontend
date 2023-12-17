@@ -1,7 +1,7 @@
 import React from 'react'
 import { useState, useEffect } from 'react';
 import TenderList from './TenderList'
-
+import FloatingNavbar from './FloatingNavbar';
 
 const VendorDashboard = () => {
   const [tenders, setTenders] = useState([{name: 'tender 1', description: '1 ghjgj'}, {name: 'tender 2', description: '2 klfjfj'}]);
@@ -11,12 +11,13 @@ const VendorDashboard = () => {
         // Replace this with your actual API call
         const fetchData = async () => {
           try {
-            const apiUrl = `http://localhost:5000/fetch-tenders`;
+            const apiUrl = `https://docudeck.pythonanywhere.com/fetch-tenders`;
     
             const response = await fetch(apiUrl, {
               method: 'GET',
               headers: {
                 'Content-Type': 'application/json',
+                'Access-Control-Allow-Origin': '*', 
               },
             });
     
@@ -37,6 +38,7 @@ const VendorDashboard = () => {
 
   return (
     <>
+      <FloatingNavbar />
       <div className="dashboard-body body-container">
         <div className="card tenders-published">
           <h2>Tenders Published</h2>

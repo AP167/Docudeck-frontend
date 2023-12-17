@@ -10,7 +10,6 @@ import UploadTender from "./components/UploadTender"
 import './components/styles/Common.css'
 
 
-
 export default function App() {
     return (
         <Router>

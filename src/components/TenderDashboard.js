@@ -11,16 +11,15 @@ const TenderDashboard = () => {
     let navigate = useNavigate();
     
     useEffect(() => {
-        // Simulate fetching tenders from the database
-        // Replace this with your actual API call
         const fetchData = async () => {
             try {
-                const apiUrl = `http://localhost:5000/fetch-tenders`;
+                const apiUrl = `https://docudeck.pythonanywhere.com/fetch-tenders`;
         
                 const response = await fetch(apiUrl, {
                   method: 'GET',
                   headers: {
                     'Content-Type': 'application/json',
+                    'Access-Control-Allow-Origin': '*', 
                   },
                 });
         

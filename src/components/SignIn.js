@@ -12,9 +12,8 @@ const SignIn = (props) => {
     const [role, setRole] = useState('');
     const {signin, signup} = useAuth();
     
-
     let navigate = useNavigate();
-
+  
     const handleSubmit = async (event) => {
         event.preventDefault();
         console.log(email, password, confirmPassword, role);
@@ -36,8 +35,6 @@ const SignIn = (props) => {
         }
 
     };
-
-    
 
     console.log(props.sign)
     
