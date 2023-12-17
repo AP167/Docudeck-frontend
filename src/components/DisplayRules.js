@@ -210,14 +210,14 @@ const DisplayRules = () => {
           <div>
             <a href="#!" onClick={handleBackToResults} className='tertiary-btn back-to-reults'>Back to Results</a>
             <br /> <br />
-            <h2>{documents[selectedDocument].title}</h2>
+            <h2 className='doc-title'>{documents[selectedDocument].title}</h2>
             <br /> <br />
             <a className='secondary-btn download' href={downloadUrl} download={`document_${selectedDocument + 1}.pdf`}> Download </a>
             {/* <a href={URL.createObjectURL(documents[selectedDocument].url)} target="_blank" >
               View Uploaded PDF
             </a> */}
             <div style={{display: "flex", justifyContent: "center"}}>
-              <div style={{width: "700px", border: "3px solid gray"}}>
+              <div className='card pdf-card'>
                 {console.log(documents[selectedDocument].url)}
                   <PdfViewer pdfFile={documents[selectedDocument].url} />
               </div>

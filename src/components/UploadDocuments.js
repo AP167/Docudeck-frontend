@@ -72,7 +72,7 @@ const UploadDocument =() => {
       <form onSubmit={handleSubmit}>
         <div className="dashboard-body tender-show ">
           <span className="tname">
-             <h1>Tender Name</h1>
+             <h2>Tender Name</h2>
           </span>
         </div>
         <div className="dashboard-body tender-show">

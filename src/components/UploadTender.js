@@ -66,6 +66,8 @@ const UploadTender = () => {
     setServerResponse(null);
   };
 
+  const isButtonDisabled = selectedOptions.length === 0;
+
   return (
     <div className='upload-tender-body' style={{ display: 'flex', width: '100%' }}>
       <div className='upload-tender-block upload-doc-block' style={{ width: '50%' }}>
@@ -98,9 +100,11 @@ const UploadTender = () => {
                     value={selectedOptions}
                     onChange={setSelectedOptions}
                     placeholder="Required Documents for this Tender"
+                    required
                   />
                 </div>
-              <button className='primary-btn tcres-btn' onClick={handlePublish}>Publish</button>
+              <button className={isButtonDisabled ? 'disabled tcres-btn' : 'primary-btn tcres-btn'} onClick={handlePublish} disabled={isButtonDisabled}>Publish</button>
+              
             </div>
           ) : (
             <div className='tcomp-res card'>

@@ -95,7 +95,7 @@
 }
 
 .results-container{
-    width: 100%;
+    width: 90%;
 }
 
 .search-res-msg{
@@ -124,16 +124,27 @@
     padding: 10px 15px;
     font-size: 15px;
     text-decoration: none;
+    margin-left: 30px;
 }
 
 .back-to-reults{
     padding: 10px;
     font-size: 15px;
     text-decoration: none;
+    margin-left: 30px;
+}
+.doc-title{
+    margin-left: 30px;
 }
 
 .search-filter-container input,
 .inp{
     border: 1px solid #d5e7ff;
     border-radius: 5px;
+}
+
+.pdf-card{
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
 }

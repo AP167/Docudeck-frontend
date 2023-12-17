@@ -1,5 +1,5 @@
 .submit-btn{
-    padding: 18px 32px;
+    padding: 10px 32px;
     margin: 15px;
     font-size: 15px;
 }
@@ -59,6 +59,6 @@
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
    
 }
-.tname h1{
+.tname h2{
     margin-left: 25px;
 }
