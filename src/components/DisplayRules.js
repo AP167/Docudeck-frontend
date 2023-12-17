@@ -17,8 +17,8 @@ const DisplayRules = () => {
   const [searchResults, setSearchResults] = useState([]);
   const [selectedDocument, setSelectedDocument] = useState(null);
   const [downloadUrl, setDownloadUrl] = useState('');
-  // const {currentUser} = useAuth();
-  // console.log(currentUser.email);
+  // const {currentUser, currentUserRole} = useAuth();
+  // console.log(currentUser, currentUserRole);
 
   const documents = [
     { documentNumber: '123', issueDate: '2023-01-01', title: 'Tender Rules and Regulations', content: 'Document content about tender rules and regulations', url: '/a.pdf' },

@@ -24,14 +24,14 @@ const SignIn = (props) => {
             const userCredential = await signin(email, password);
             console.log('User created:', userCredential.user);
           } catch (error) {
-            console.error('Failed to log in:', error);
+            console.error('Failed to sign in:', error);
           }
-        } else{ // Sign Out
+        } else{ // Sign Up
           try {
-            const userCredential = await signup(email, password);
+            const userCredential = await signup(email, password, role);
             console.log('User created:', userCredential.user);
           } catch (error) {
-            console.error('Failed to log in:', error);
+            console.error('Failed to sign up:', error);
           }
         }
 
