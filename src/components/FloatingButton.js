@@ -1,6 +1,6 @@
 import React from 'react';
 import { FaBook } from 'react-icons/fa';
-import './styles/FloatingButton.css'; // Make sure to import the CSS file
+import './styles/FloatingButton.css'; 
 import { useNavigate } from 'react-router-dom';
 
 const FloatingButton = () => {

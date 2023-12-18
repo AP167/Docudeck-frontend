@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import { FaComments, FaPaperPlane } from 'react-icons/fa'; // Import the chat and send icons from react-icons
-import './styles/Chatbot.css'; // Make sure to import the CSS file
+import { FaComments, FaPaperPlane } from 'react-icons/fa'; 
+import './styles/Chatbot.css'; 
 
 const Chatbot = () => {
   const [isChatOpen, setIsChatOpen] = useState(false);

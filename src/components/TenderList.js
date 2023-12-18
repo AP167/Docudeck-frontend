@@ -21,15 +21,14 @@ const TenderCard = ({ tender, type }) => {
   };
 
   const handleView = () => {
-    // Handle view necessities logic here
     console.log(`Viewing necessities for tender: ${tender.name}`);
 
     if (type === "vendor"){
         // Participate
-        navigate('/upload-documents', {state: {tender}});
+        navigate('/vendor-upload-documents', {state: {tender}});
     } else {
         // View vendor participation
-        navigate('/vendor-participation', {state: {tender}});
+        navigate('/technical-evaluation', {state: {tender}});
     }
   };
 

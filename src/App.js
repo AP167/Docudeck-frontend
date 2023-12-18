@@ -17,8 +17,8 @@ export default function App() {
             <Routes>
                 <Route path = '/' element={<DisplayRules />} />
                 <Route path = '/admin-upload-rule' element={<ProtectedRoute allowedRoles={['admin']} element={<UploadRule />} />} />
-                <Route path = '/ta-dashboard' element={<ProtectedRoute allowedRoles={['tia']} element={<TenderDashboard />} />} />
-                <Route path = '/ta-upload-tender' element={<ProtectedRoute allowedRoles={['tia']} element={<UploadTender />} />} />
+                <Route path = '/tia-dashboard' element={<ProtectedRoute allowedRoles={['tia']} element={<TenderDashboard />} />} />
+                <Route path = '/tia-upload-tender' element={<ProtectedRoute allowedRoles={['tia']} element={<UploadTender />} />} />
                 <Route path = '/technical-evaluation' element={<ProtectedRoute allowedRoles={['tia']} element={<VendorParticipation />} />} />
                 <Route path = '/vendor-dashboard' element={<ProtectedRoute allowedRoles={['vendor']} element={<VendorDashboard />} />} />
                 <Route path = '/vendor-upload-documents' element={<ProtectedRoute allowedRoles={['vendor']} element={<UploadDocuments />} />} />

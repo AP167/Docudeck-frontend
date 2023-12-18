@@ -43,7 +43,7 @@ const TenderDashboard = () => {
         <div className='dashboard-body body-container'>
             <FloatingNavbar />
             <div className="card tdb-card">
-                <button onClick={() => navigate('/upload-tender')} className="create-tender-button">
+                <button onClick={() => navigate('/tia-upload-tender')} className="create-tender-button">
                     Create Tender
                 </button>
             </div>

@@ -5,12 +5,15 @@ import PdfViewer from './PdfViewer';
 import './styles/UploadTender.css';
 import Select from 'react-select';
 import FloatingNavbar from './FloatingNavbar';
+import { useNavigate } from 'react-router-dom';
 
 const UploadTender = () => {
   const [pdfFile, setPdfFile] = useState(null);
   const [serverResponse, setServerResponse] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
   const [selectedOptions, setSelectedOptions] = useState([]);
+
+  let navigate = useNavigate();
 
   const options = [
     { value: 'aadhar', label: 'Aadhar card' },
@@ -61,6 +64,8 @@ const UploadTender = () => {
 
   const handlePublish = () => {
     // Implement the logic to publish the document
+
+    navigate('/tia-dashboard')
   };
 
   const handleUploadAnotherDoc = () => {
