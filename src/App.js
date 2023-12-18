@@ -8,6 +8,7 @@ import VendorParticipation from "./components/VendorParticipation"
 import UploadDocuments from "./components/UploadDocuments"
 import UploadTender from "./components/UploadTender"
 import './components/styles/Common.css'
+import ProtectedRoute from "./ProtectedRoute"
 
 
 export default function App() {
@@ -15,12 +16,12 @@ export default function App() {
         <Router>
             <Routes>
                 <Route path = '/' element={<DisplayRules />} />
-                <Route path = '/upload-rule' element={<UploadRule />} />
-                <Route path = '/tender-dashboard' element={<TenderDashboard />} />
-                <Route path = '/vendor-dashboard' element={<VendorDashboard />} />
-                <Route path = '/vendor-participation' element={<VendorParticipation />} />
-                <Route path = '/upload-documents' element={<UploadDocuments />} />
-                <Route path = '/upload-tender' element={<UploadTender />} />
+                <Route path = '/admin-upload-rule' element={<ProtectedRoute allowedRoles={['admin']} element={<UploadRule />} />} />
+                <Route path = '/ta-dashboard' element={<ProtectedRoute allowedRoles={['tia']} element={<TenderDashboard />} />} />
+                <Route path = '/ta-upload-tender' element={<ProtectedRoute allowedRoles={['tia']} element={<UploadTender />} />} />
+                <Route path = '/technical-evaluation' element={<ProtectedRoute allowedRoles={['tia']} element={<VendorParticipation />} />} />
+                <Route path = '/vendor-dashboard' element={<ProtectedRoute allowedRoles={['vendor']} element={<VendorDashboard />} />} />
+                <Route path = '/vendor-upload-documents' element={<ProtectedRoute allowedRoles={['vendor']} element={<UploadDocuments />} />} />
                 <Route path = '/sign-up' element={<SignIn sign="Up" />} />
                 <Route path = '/sign-in' element={<SignIn sign="In" />} />
                 <Route path = '/*' element={<h>Page not found!</h>} />

@@ -22,15 +22,19 @@ export const AuthProvider = ({ children }) => {
         onValue(roleRef, (snapshot) => {
           const role = snapshot.val();
           setCurrentUserRole(role);
+          setLoading(false); // Set loading to false only after the role is fetched
+        }, {
+          onlyOnce: true // Use onlyOnce to fetch the role once instead of subscribing
         });
       } else {
         setCurrentUserRole(null);
+        setLoading(false);
       }
-      setLoading(false);
     });
 
     return unsubscribe;
   }, []);
+
 
   const signup = async (email, password, role) => {
     const userCredential = await createUserWithEmailAndPassword(auth, email, password);

@@ -4,7 +4,7 @@ import { FaSearch } from 'react-icons/fa';
 import PdfViewer from './PdfViewer';
 import './styles/DisplayRules.css'
 import Chatbot from './Chatbot';
-// import { useAuth } from '../AuthContext';
+import { useAuth } from '../AuthContext';
 
 const DisplayRules = () => {
   const [searchTerm, setSearchTerm] = useState('');
@@ -17,8 +17,8 @@ const DisplayRules = () => {
   const [searchResults, setSearchResults] = useState([]);
   const [selectedDocument, setSelectedDocument] = useState(null);
   const [downloadUrl, setDownloadUrl] = useState('');
-  // const {currentUser, currentUserRole} = useAuth();
-  // console.log(currentUser, currentUserRole);
+  const {currentUser, currentUserRole} = useAuth();
+  console.log(currentUser, currentUserRole);
 
   const documents = [
     { documentNumber: '123', issueDate: '2023-01-01', title: 'Tender Rules and Regulations', content: 'Document content about tender rules and regulations', url: '/a.pdf' },
