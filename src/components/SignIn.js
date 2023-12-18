@@ -81,7 +81,7 @@ const SignIn = (props) => {
               <select id="role" value={role} onChange={(e) => setRole(e.target.value)} required>
                 <option value="">Select role</option>
                 <option value="admin">Admin</option>
-                <option value="user">Tender Inviting Authority</option>
+                <option value="tia">Tender Inviting Authority</option>
                 <option value="vendor">Vendor</option>
               </select>
             </div></> : <></>

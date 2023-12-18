@@ -23,6 +23,7 @@ const UploadTender = () => {
 
   const onUpload = async (file) => {
     const fileUrl = URL.createObjectURL(file);
+    console.log(fileUrl);
     setPdfFile(fileUrl);
 
     setIsLoading(true);
