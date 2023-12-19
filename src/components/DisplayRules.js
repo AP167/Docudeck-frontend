@@ -20,28 +20,27 @@ const DisplayRules = () => {
   const {currentUser, currentUserRole} = useAuth();
   console.log(currentUser, currentUserRole);
 
-  const documents = [
-    { documentNumber: '123', issueDate: '2023-01-01', title: 'Tender Rules and Regulations', content: 'Document content about tender rules and regulations', url: '/a.pdf' },
-    { documentNumber: '456', issueDate: '2023-02-15', title: 'Procurement Guidelines', content: 'Document content about procurement guidelines', url: '/b.pdf' },
-    { documentNumber: '789', issueDate: '2023-03-20', title: 'Contract Terms and Conditions', content: 'Document content about contract terms and conditions hkajdhka', url: '/c.pdf' },
-  ];
+  // const documents = [
+  //   { documentNumber: '123', issueDate: '2023-01-01', title: 'Tender Rules and Regulations', content: 'Document content about tender rules and regulations', url: '/a.pdf' },
+  //   { documentNumber: '456', issueDate: '2023-02-15', title: 'Procurement Guidelines', content: 'Document content about procurement guidelines', url: '/b.pdf' },
+  //   { documentNumber: '789', issueDate: '2023-03-20', title: 'Contract Terms and Conditions', content: 'Document content about contract terms and conditions hkajdhka', url: '/111.pdf' },
+  // ];
 
   const deptList = ['Department of Finance', 'Department of Coal', 'Department of Power'];
   const ministryList = ['Ministry of Finance', 'Ministry of Coal', 'Ministry of Power'];
 
-
   const handleSearch = async () => {
     const searchParams = {
-      policy_id: "2",
-      issue_date: "2023-10-10",
-      date_from: "2001-10-10",
-      date_to: "2002-10-10",
-      department: "1",
-      ministry: "1"
+      policy_id: documentNumber,
+      issue_date: issueDate,
+      date_from: fromDate,
+      date_to: toDate,
+      department: department,
+      ministry: ministry
     };
 
     try {
-      const response = await fetch('http://docudeck.pythonanywhere.com/search-policies', {
+      const response = await fetch('http://localhost:5000/search-policies', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -53,6 +52,8 @@ const DisplayRules = () => {
       if (response.ok) {
         const policies = await response.json();
         console.log('Policies fetched:', policies);
+        setSearchResults(policies);
+        setSelectedDocument(null);
       } else {
         console.error('Failed to fetch policies');
       }
@@ -60,14 +61,14 @@ const DisplayRules = () => {
       console.error('Error searching for policies:', error);
     }
 
-    const filteredResults = documents.filter(document =>
-      document.content.toLowerCase().includes(searchTerm.toLowerCase()) &&
-      document.documentNumber.includes(documentNumber) && (!issueDate || document.issueDate === issueDate) &&
-      (!fromDate || !toDate || (document.issueDate >= fromDate && document.issueDate <= toDate))
-    );
+    // const filteredResults = documents.filter(document =>
+    //   document.content.toLowerCase().includes(searchTerm.toLowerCase()) &&
+    //   document.documentNumber.includes(documentNumber) && (!issueDate || document.issueDate === issueDate) &&
+    //   (!fromDate || !toDate || (document.issueDate >= fromDate && document.issueDate <= toDate))
+    // );
 
-    setSearchResults(filteredResults);
-    setSelectedDocument(null);
+    // setSearchResults(filteredResults);
+    // setSelectedDocument(null);
   };
 
   const handleReset = () => {
@@ -82,7 +83,7 @@ const DisplayRules = () => {
 
   const handleDocumentClick = (documentIndex) => {
     setSelectedDocument(documentIndex);
-    setDownloadUrl(documents[documentIndex].url);
+    setDownloadUrl(searchResults[documentIndex]);
   };
 
   const handleBackToResults = () => {
@@ -185,7 +186,7 @@ const DisplayRules = () => {
             </select>
           </label>
         </div>
-        <button className='filter-btn tertiary-btn' onClick={handleReset}>Apply Filter</button>
+        <button className='filter-btn tertiary-btn' onClick={handleSearch}>Apply Filter</button>
         <button className='reset-btn tertiary-btn' onClick={handleReset}>Reset</button>
       </div>
     </div>
@@ -200,10 +201,10 @@ const DisplayRules = () => {
               {searchResults.map((result, index) => (
                 <li key={index}>
                   <h3 onClick={() => handleDocumentClick(index)}>
-                    <a href="#!">{result.title}</a>
+                    <a href="#!">{result}</a>
                   </h3>
                   {/* <p>Matched Keywords: {result.matchedKeywords.join(', ')}</p> */}
-                  <p>{result.content.substring(0, 150)}{result.content.length > 150 ? "..." : ""}</p>
+                  {/* <p>{result.content.substring(0, 150)}{result.content.length > 150 ? "..." : ""}</p> */}
                 </li>
               ))}
             </ul>
@@ -212,7 +213,7 @@ const DisplayRules = () => {
           <div>
             <a href="#!" onClick={handleBackToResults} className='tertiary-btn back-to-reults'>Back to Results</a>
             <br /> <br />
-            <h2 className='doc-title'>{documents[selectedDocument].title}</h2>
+            <h2 className='doc-title'>{searchResults[selectedDocument]}</h2>
             <br /> <br />
             <a className='secondary-btn download' href={downloadUrl} download={`document_${selectedDocument + 1}.pdf`}> Download </a>
             {/* <a href={URL.createObjectURL(documents[selectedDocument].url)} target="_blank" >
@@ -220,8 +221,8 @@ const DisplayRules = () => {
             </a> */}
             <div style={{display: "flex", justifyContent: "center"}}>
               <div className='card pdf-card'>
-                {console.log(documents[selectedDocument].url)}
-                  <PdfViewer pdfFile={documents[selectedDocument].url} />
+                {console.log(searchResults[selectedDocument])}
+                  <PdfViewer pdfFile={searchResults[selectedDocument].substring(searchResults[selectedDocument].lastIndexOf('\\'))} />
               </div>
             </div>
           </div>

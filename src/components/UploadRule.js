@@ -8,12 +8,13 @@ const UploadRule = () => {
     console.log(file)
 
     const formData = new FormData();
-    formData.append('pmId', '3'); 
-    formData.append('policyName', 'abc');
+    formData.append('pmId', '1'); 
     formData.append('policy', file);
+    // formData.append('policyName', file.name);
   
     try {
-      const response = await fetch('http://docudeck.pythonanywhere.com/add-policy', {
+      console.log("emtered")
+      const response = await fetch('http://localhost:5000/add-policy', {
         method: 'PUT',
         body: formData,
         headers: {
