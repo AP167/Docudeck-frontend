@@ -127,3 +127,17 @@
     border-radius: 5px;
     cursor: pointer;
   }
+  .input-area button:last-of-type {
+    margin-left: 5px;
+  }
+
+  .voice-button {
+    padding: 10px;
+    background-color: #04bd90; /* Green color from the theme */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-left: 10px;
+  }
+  

@@ -1,11 +1,39 @@
-import React, { useState } from 'react';
-import { FaComments, FaPaperPlane } from 'react-icons/fa'; 
+import React, { useState, useEffect } from 'react';
+import { FaComments, FaPaperPlane, FaMicrophone, FaStop } from 'react-icons/fa'; 
+import SpeechRecognition, { useSpeechRecognition } from 'react-speech-recognition';
 import './styles/Chatbot.css'; 
 
 const Chatbot = () => {
   const [isChatOpen, setIsChatOpen] = useState(false);
   const [inputValue, setInputValue] = useState('');
   const [messages, setMessages] = useState([]);
+  const [isListening, setIsListening] = useState(false);
+  const { transcript, listening, resetTranscript } = useSpeechRecognition();
+
+  useEffect(() => {
+    if (isListening) {
+      SpeechRecognition.startListening({ continuous: true });
+    } else {
+      SpeechRecognition.stopListening();
+      if (transcript) {
+        console.log(transcript)
+        const newMessages = [...messages, { text: transcript, from: 'user' }];
+        setMessages(newMessages);
+        resetTranscript();
+        // Simulate fetching AI-generated reply
+        setTimeout(() => {
+          setMessages([...newMessages, { text: 'AI reply', from: 'ai' }]);
+        }, 1000);
+        // Show loading dots for AI reply
+        setMessages([...newMessages, { text: '', from: 'ai', loading: true }]);
+      }
+    }
+  }, [isListening]);
+
+  const handleVoiceMessage = () => {
+    setIsListening(!isListening);
+  };
+
 
   const toggleChat = () => {
     setIsChatOpen(!isChatOpen);
@@ -50,6 +78,9 @@ const Chatbot = () => {
             />
             <button onClick={handleSendMessage}>
               <FaPaperPlane />
+            </button>
+            <button onClick={handleVoiceMessage}>
+              {isListening ? <FaStop /> : <FaMicrophone />}
             </button>
           </div>
         </div>
