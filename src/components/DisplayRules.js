@@ -31,6 +31,7 @@ const DisplayRules = () => {
 
   const handleSearch = async () => {
     const searchParams = {
+      keywords: [searchTerm],
       policy_id: documentNumber,
       issue_date: issueDate,
       date_from: fromDate,
