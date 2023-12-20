@@ -13,15 +13,15 @@ const TenderCard = ({ tender, type }) => {
 
     const link = document.createElement('a');
     link.href = url;
-    link.download = ` ${tender.name}`; 
+    link.download = ` ${tender[2]}`; 
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);
-    console.log(`Downloading document for tender: ${tender.name}`);
+    console.log(`Downloading document for tender: ${tender[2]}`);
   };
 
   const handleView = () => {
-    console.log(`Viewing necessities for tender: ${tender.name}`);
+    console.log(`Viewing necessities for tender: ${tender[2]}`);
 
     if (type === "vendor"){
         // Participate
@@ -34,9 +34,9 @@ const TenderCard = ({ tender, type }) => {
 
   return (
     <div className="tender-card card">
-      {console.log(tender.name)}
-      <h3>{tender.name}</h3>
-      <p>{tender.description}</p>
+      {console.log(tender[2])}
+      <h3>{tender[2].substring(tender[2].lastIndexOf('\\') + 1)}</h3>
+      <p>{tender[1]}</p>
       <div className="button-container">
           <button onClick={handleDownload}>
             <FaDownload /> Download
@@ -53,8 +53,9 @@ const TenderCard = ({ tender, type }) => {
 const TenderList = ({ tenders, type }) => {
   return (
     <div className="tender-list">
-      {tenders.map((tender) => (
-        <TenderCard key={tender.id} tender={tender} type={type} />
+      {console.log(tenders)}
+      {tenders.map((tender, index) => (
+        <TenderCard key={index} tender={tender} type={type} />
       ))}
     </div>
   );

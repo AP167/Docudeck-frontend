@@ -202,7 +202,7 @@ const DisplayRules = () => {
               {searchResults.map((result, index) => (
                 <li key={index}>
                   <h3 onClick={() => handleDocumentClick(index)}>
-                    <a href="#!">{result}</a>
+                    <a href="#!">{result.substring(result.lastIndexOf('\\') + 1)}</a>
                   </h3>
                   {/* <p>Matched Keywords: {result.matchedKeywords.join(', ')}</p> */}
                   {/* <p>{result.content.substring(0, 150)}{result.content.length > 150 ? "..." : ""}</p> */}
@@ -214,7 +214,7 @@ const DisplayRules = () => {
           <div>
             <a href="#!" onClick={handleBackToResults} className='tertiary-btn back-to-reults'>Back to Results</a>
             <br /> <br />
-            <h2 className='doc-title'>{searchResults[selectedDocument]}</h2>
+            <h2 className='doc-title'>{searchResults[selectedDocument].substring(searchResults[selectedDocument].lastIndexOf('\\'))}</h2>
             <br /> <br />
             <a className='secondary-btn download' href={downloadUrl} download={`document_${selectedDocument + 1}.pdf`}> Download </a>
             {/* <a href={URL.createObjectURL(documents[selectedDocument].url)} target="_blank" >

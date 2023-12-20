@@ -9,6 +9,7 @@ import UploadDocuments from "./components/UploadDocuments"
 import UploadTender from "./components/UploadTender"
 import './components/styles/Common.css'
 import ProtectedRoute from "./ProtectedRoute"
+import BiddingAssistance from "./components/BiddingAssistance"
 
 
 export default function App() {
@@ -24,6 +25,7 @@ export default function App() {
                 <Route path = '/vendor-upload-documents' element={<ProtectedRoute allowedRoles={['vendor']} element={<UploadDocuments />} />} />
                 <Route path = '/sign-up' element={<SignIn sign="Up" />} />
                 <Route path = '/sign-in' element={<SignIn sign="In" />} />
+                <Route path = '/bid-assistance' element={<BiddingAssistance />} />
                 <Route path = '/*' element={<h>Page not found!</h>} />
             </Routes>
         </Router>

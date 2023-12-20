@@ -6,38 +6,45 @@ import FloatingNavbar from './FloatingNavbar';
 
 
 const TenderDashboard = () => {
-    const [tenders, setTenders] = useState([{name: 'tender 1', description: '1 ghjgj'}, {name: 'tender 2', description: '2 klfjfj'}]);
+    const [tenders, setTenders] = useState([]);
 
     let navigate = useNavigate();
-    
-    useEffect(() => {
-        const fetchData = async () => {
-            try {
-                const apiUrl = `https://docudeck.pythonanywhere.com/fetch-tenders`;
-        
-                const response = await fetch(apiUrl, {
-                  method: 'GET',
-                  headers: {
-                    'Content-Type': 'application/json',
-                    'Access-Control-Allow-Origin': '*', 
-                  },
-                });
-        
-                if (response.ok) {
-                  const data = await response.json();
-                  setTenders(data);
-                  console.log('recieved list')
-                } else {
-                  console.error('Error fetching tenders:', response.statusText);
-                }
-              } catch (error) {
-                console.error('Error fetching tenders:', error);
-              }
-        
-        };
 
-        fetchData();
-    }, []); // Run only once on component mount
+    useEffect(() => {
+      const ta_id = '1'; 
+      fetch(`http://localhost:5000/fetch-tenders?taId=${ta_id}`)
+        .then(response => response.json())
+        .then(data => setTenders(data));
+    }, []);
+    
+    // useEffect(() => {
+    //     const fetchData = async () => {
+    //         try {
+    //             const apiUrl = `https://docudeck.pythonanywhere.com/fetch-tenders`;
+        
+    //             const response = await fetch(apiUrl, {
+    //               method: 'GET',
+    //               headers: {
+    //                 'Content-Type': 'application/json',
+    //                 'Access-Control-Allow-Origin': '*', 
+    //               },
+    //             });
+        
+    //             if (response.ok) {
+    //               const data = await response.json();
+    //               setTenders(data);
+    //               console.log('recieved list')
+    //             } else {
+    //               console.error('Error fetching tenders:', response.statusText);
+    //             }
+    //           } catch (error) {
+    //             console.error('Error fetching tenders:', error);
+    //           }
+        
+    //     };
+
+    //     fetchData();
+    // }, []); // Run only once on component mount
 
     return (
         <div className='dashboard-body body-container'>
